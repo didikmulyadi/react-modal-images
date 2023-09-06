@@ -1,4 +1,5 @@
 # react-modal-image
+
 [![npm package][npm-badge]][npm].
 
 > This package is created under [https://github.com/aautio/react-modal-image](https://github.com/aautio/react-modal-image) because that repository is not active and updated. This package is also fixed some issue from that repository.
@@ -21,13 +22,16 @@ A _lightweight_ React component providing modal image Lightbox.
 
 You need to bring your own `Set` and `fetch` polyfills if you use old Internet Explorers.
 
-## Fixed Original Issue  ([link](https://github.com/aautio/react-modal-image/issues))
+## Fixed Original Issue ([link](https://github.com/aautio/react-modal-image/issues))
+
 - [ ] Add onClose in props type
-- [ ] Issue cors when downloading the image
+- [x] Issue cors when downloading the image
 
 ## New Features
+
 - [ ] Support multiple images with action (prev and next)
 - [ ] Add on download
+- [ ] Add named download
 - [ ] Disable close by OnClick
 - [ ] Control max width by Props
 
