@@ -1,6 +1,6 @@
 import { Component } from "react";
 
-function appendStyle(id, css) {
+function appendStyle(id: string, css: string) {
   if (!document.head.querySelector("#" + id)) {
     const node = document.createElement("style");
     node.textContent = css;
@@ -11,14 +11,19 @@ function appendStyle(id, css) {
   }
 }
 
-export default class StyleInjector extends Component {
+interface IStyleInjectorProps {
+  name: string;
+  css: string;
+}
+
+export default class StyleInjector extends Component<IStyleInjectorProps> {
   componentDidMount() {
     appendStyle(this.props.name, this.props.css);
   }
 
   componentWillUnmount() {
     const node = document.getElementById(this.props.name);
-    node.parentNode.removeChild(node);
+    node?.parentNode?.removeChild(node);
   }
 
   render() {
@@ -26,7 +31,11 @@ export default class StyleInjector extends Component {
   }
 }
 
-export const lightboxStyles = ({ imageBackgroundColor }) => `
+export const lightboxStyles = ({
+  imageBackgroundColor,
+}: {
+  imageBackgroundColor: string;
+}) => `
   body {
     overflow: hidden;
   }

@@ -5,18 +5,44 @@ import StyleInjector, { lightboxStyles } from "./styles";
 import Header from "./Header";
 import Image from "./Image";
 
-export default class Lightbox extends Component {
+export interface ILightBoxBaseProps {
+  medium?: string;
+  large?: string;
+  alt?: string;
+  hideDownload?: boolean;
+  hideZoom?: boolean;
+  showRotate?: boolean;
+  imageBackgroundColor?: string;
+  lightboxClassName?: string;
+}
+
+interface ILightboxProps extends ILightBoxBaseProps {
+  onClose?: () => void;
+}
+
+interface ILightboxState {
+  move: { x: number; y: number };
+  moveStart?: { x: number; y: number };
+  zoomed: boolean;
+  rotationDeg: number;
+}
+
+export default class Lightbox extends Component<
+  ILightboxProps,
+  ILightboxState
+> {
+  contentEl: any;
   state = {
     move: { x: 0, y: 0 },
     moveStart: undefined,
     zoomed: false,
-    rotationDeg: 0
+    rotationDeg: 0,
   };
 
-  handleKeyDown = event => {
+  handleKeyDown = (event: any) => {
     // ESC or ENTER closes the modal
     if (event.keyCode === 27 || event.keyCode === 13) {
-      this.props.onClose();
+      this.props?.onClose?.();
     }
   };
 
@@ -28,7 +54,7 @@ export default class Lightbox extends Component {
     document.removeEventListener("keydown", this.handleKeyDown, false);
   }
 
-  getCoordinatesIfOverImg = event => {
+  getCoordinatesIfOverImg = (event: any) => {
     const point = event.changedTouches ? event.changedTouches[0] : event;
 
     if (point.target.id !== "react-modal-image-img") {
@@ -43,7 +69,7 @@ export default class Lightbox extends Component {
     return { x, y };
   };
 
-  handleMouseDownOrTouchStart = event => {
+  handleMouseDownOrTouchStart = (event: any) => {
     event.preventDefault();
 
     if (event.touches && event.touches.length > 1) {
@@ -55,7 +81,7 @@ export default class Lightbox extends Component {
 
     if (!coords) {
       // click outside the img => close modal
-      this.props.onClose();
+      this.props.onClose?.();
     }
 
     if (!this.state.zoomed) {
@@ -63,17 +89,19 @@ export default class Lightbox extends Component {
       return;
     }
 
-    this.setState(prev => {
+    this.setState((prev) => {
       return {
-        moveStart: {
-          x: coords.x - prev.move.x,
-          y: coords.y - prev.move.y
-        }
+        moveStart: coords
+          ? {
+              x: coords.x - prev.move.x,
+              y: coords.y - prev.move.y,
+            }
+          : { x: 0, y: 0 },
       };
     });
   };
 
-  handleMouseMoveOrTouchMove = event => {
+  handleMouseMoveOrTouchMove = (event: any) => {
     event.preventDefault();
 
     if (!this.state.zoomed || !this.state.moveStart) {
@@ -93,32 +121,32 @@ export default class Lightbox extends Component {
       return;
     }
 
-    this.setState(prev => {
+    this.setState((prev) => {
       return {
         move: {
-          x: coords.x - prev.moveStart.x,
-          y: coords.y - prev.moveStart.y
-        }
+          x: coords.x - (prev.moveStart?.x ?? 0),
+          y: coords.y - (prev.moveStart?.y ?? 0),
+        },
       };
     });
   };
 
-  handleMouseUpOrTouchEnd = event => {
+  handleMouseUpOrTouchEnd = (_event: any) => {
     this.setState({
-      moveStart: undefined
+      moveStart: undefined,
     });
   };
 
-  toggleZoom = event => {
+  toggleZoom = (event: any) => {
     event.preventDefault();
-    this.setState(prev => ({
+    this.setState((prev) => ({
       zoomed: !prev.zoomed,
       // reset position if zoomed out
-      move: prev.zoomed ? { x: 0, y: 0 } : prev.move
+      move: prev.zoomed ? { x: 0, y: 0 } : prev.move,
     }));
   };
 
-  toggleRotate = event => {
+  toggleRotate = (event: any) => {
     event.preventDefault();
 
     const { rotationDeg } = this.state;
@@ -128,13 +156,14 @@ export default class Lightbox extends Component {
       return;
     }
 
-    this.setState(prevState => ({
-      rotationDeg: (prevState.rotationDeg += 90)
+    this.setState((prevState) => ({
+      rotationDeg: prevState.rotationDeg + 90,
     }));
   };
 
   render() {
     const {
+      lightboxClassName,
       medium,
       large,
       alt,
@@ -142,12 +171,12 @@ export default class Lightbox extends Component {
       hideDownload,
       hideZoom,
       showRotate,
-      imageBackgroundColor = "black"
+      imageBackgroundColor = "black",
     } = this.props;
     const { move, zoomed, rotationDeg } = this.state;
 
     return (
-      <div>
+      <div className={lightboxClassName || ""}>
         <StyleInjector
           name="__react_modal_image__lightbox"
           css={lightboxStyles({ imageBackgroundColor })}
@@ -162,7 +191,7 @@ export default class Lightbox extends Component {
             onTouchStart={this.handleMouseDownOrTouchStart}
             onTouchEnd={this.handleMouseUpOrTouchEnd}
             onTouchMove={this.handleMouseMoveOrTouchMove}
-            ref={el => {
+            ref={(el) => {
               this.contentEl = el;
             }}
           >
@@ -170,17 +199,11 @@ export default class Lightbox extends Component {
               <Image
                 id="react-modal-image-img"
                 className="__react_modal_image__large_img"
-                src={large || medium}
+                src={large || medium || ""}
                 style={{
-                  transform: `translate3d(-50%, -50%, 0) translate3d(${
-                    move.x
-                  }px, ${move.y}px, 0) rotate(${rotationDeg}deg)`,
-                  WebkitTransform: `translate3d(-50%, -50%, 0) translate3d(${
-                    move.x
-                  }px, ${move.y}px, 0) rotate(${rotationDeg}deg)`,
-                  MsTransform: `translate3d(-50%, -50%, 0) translate3d(${
-                    move.x
-                  }px, ${move.y}px, 0) rotate(${rotationDeg}deg)`
+                  transform: `translate3d(-50%, -50%, 0) translate3d(${move.x}px, ${move.y}px, 0) rotate(${rotationDeg}deg)`,
+                  WebkitTransform: `translate3d(-50%, -50%, 0) translate3d(${move.x}px, ${move.y}px, 0) rotate(${rotationDeg}deg)`,
+                  MsTransform: `translate3d(-50%, -50%, 0) translate3d(${move.x}px, ${move.y}px, 0) rotate(${rotationDeg}deg)`,
                 }}
                 handleDoubleClick={this.toggleZoom}
               />
@@ -189,13 +212,13 @@ export default class Lightbox extends Component {
               <Image
                 id="react-modal-image-img"
                 className="__react_modal_image__medium_img"
-                src={medium || large}
+                src={medium || large || ""}
                 handleDoubleClick={this.toggleZoom}
                 contextMenu={!medium}
                 style={{
                   transform: `translate3d(-50%, -50%, 0) rotate(${rotationDeg}deg)`,
                   WebkitTransform: `translate3d(-50%, -50%, 0) rotate(${rotationDeg}deg)`,
-                  MsTransform: `translate3d(-50%, -50%, 0) rotate(${rotationDeg}deg)`
+                  MsTransform: `translate3d(-50%, -50%, 0) rotate(${rotationDeg}deg)`,
                 }}
               />
             )}

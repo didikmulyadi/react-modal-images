@@ -24,17 +24,18 @@ You need to bring your own `Set` and `fetch` polyfills if you use old Internet E
 
 ## Fixed Original Issue ([link](https://github.com/aautio/react-modal-image/issues))
 
-- [ ] Add onClose in props type
+- [x] Add onClose in props type
 - [x] Issue cors when downloading the image
 
 ## New Features
 
-- [ ] Typescript
+- [x] Typescript
 - [ ] Support multiple images with action (prev and next)
 - [ ] Add on download
 - [ ] Add named download
 - [ ] Disable close by OnClick
 - [ ] Control max width by Props
+- [x] Support props `lightboxClassName` in Lightbox component
 
 ## Simple API
 

@@ -2,16 +2,29 @@ import React, { Component } from "react";
 
 import { SpinnerIcon } from "./icons";
 
-export default class Image extends Component {
+interface IImageProps {
+  contextMenu?: any;
+  id: string;
+  className: string;
+  src: string;
+  style: any;
+  handleDoubleClick: (e: any) => void;
+}
+
+interface IImageState {
+  loading: boolean;
+}
+
+export default class Image extends Component<IImageProps, IImageState> {
   state = {
-    loading: true
+    loading: true,
   };
 
   handleOnLoad = () => {
     this.setState({ loading: false });
   };
 
-  handleOnContextMenu = event => {
+  handleOnContextMenu = (event: any) => {
     !this.props.contextMenu && event.preventDefault();
   };
 

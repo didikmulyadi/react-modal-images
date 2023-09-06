@@ -13,11 +13,12 @@ import {
  */
 
 const download =
-  (href, name = href.split("/").slice(-1)) =>
-  (event) => {
+  (href: string, name = null) =>
+  (event: any) => {
     const link = document.createElement("a");
     link.href = href;
-    link.download = name;
+    link.download = name || href.split("/").slice(-1)[0];
+
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -35,7 +36,7 @@ const Header = ({
   enableDownload,
   enableZoom,
   enableRotate,
-}) => (
+}: any) => (
   <div className="__react_modal_image__header">
     <span className="__react_modal_image__icon_menu">
       {enableDownload && (

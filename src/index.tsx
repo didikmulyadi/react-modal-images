@@ -1,21 +1,35 @@
 import React, { Component } from "react";
 
-import Lightbox from "./Lightbox";
+import Lightbox, { ILightBoxBaseProps } from "./components/Lightbox";
 
-export { default as Lightbox } from "./Lightbox";
+export { default as Lightbox } from "./components/Lightbox";
 
-export default class extends Component {
+interface LightBoxWithImageProps extends ILightBoxBaseProps {
+  className?: string;
+  small: string;
+  smallSrcSet?: string;
+}
+
+interface LightBoxWithImageState {
+  modalOpen: boolean;
+}
+
+export class LightBoxWithImage extends Component<
+  LightBoxWithImageProps,
+  LightBoxWithImageState
+> {
   state = { modalOpen: false };
 
   toggleModal = () => {
-    this.setState(prev => ({
-      modalOpen: !prev.modalOpen
+    this.setState((prev) => ({
+      modalOpen: !prev.modalOpen,
     }));
   };
 
   render() {
     const {
       className,
+      lightboxClassName,
       small,
       smallSrcSet,
       medium,
@@ -24,7 +38,7 @@ export default class extends Component {
       hideDownload,
       hideZoom,
       showRotate,
-      imageBackgroundColor
+      imageBackgroundColor,
     } = this.props;
     const { modalOpen } = this.state;
 
@@ -35,7 +49,7 @@ export default class extends Component {
           style={{
             cursor: "pointer",
             maxWidth: "100%",
-            maxHeight: "100%"
+            maxHeight: "100%",
           }}
           onClick={this.toggleModal}
           src={small}
@@ -44,6 +58,7 @@ export default class extends Component {
         />
         {modalOpen && (
           <Lightbox
+            lightboxClassName={lightboxClassName}
             medium={medium}
             large={large}
             alt={alt}
