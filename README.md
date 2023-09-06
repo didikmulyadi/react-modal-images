@@ -29,6 +29,7 @@ You need to bring your own `Set` and `fetch` polyfills if you use old Internet E
 
 ## New Features
 
+- [ ] Typescript
 - [ ] Support multiple images with action (prev and next)
 - [ ] Add on download
 - [ ] Add named download
