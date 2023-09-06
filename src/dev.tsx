@@ -11,6 +11,8 @@ const Demo = () => (
     <div>
       <LightBoxWithImage
         alt="Here is the caption"
+        onDownload={() => console.log("download the image")}
+        fileName="Custom File Name.jpg"
         small="assets/example_img_small.jpg"
         medium="assets/example_img_medium.jpg"
         large="assets/example_img_large.jpg"

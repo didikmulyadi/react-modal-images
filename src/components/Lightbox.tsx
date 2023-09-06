@@ -14,6 +14,8 @@ export interface ILightBoxBaseProps {
   showRotate?: boolean;
   imageBackgroundColor?: string;
   lightboxClassName?: string;
+  onDownload?: () => void;
+  fileName?: string;
 }
 
 interface ILightboxProps extends ILightBoxBaseProps {
@@ -167,6 +169,8 @@ export default class Lightbox extends Component<
       medium,
       large,
       alt,
+      fileName,
+      onDownload,
       onClose,
       hideDownload,
       hideZoom,
@@ -232,6 +236,8 @@ export default class Lightbox extends Component<
             toggleRotate={this.toggleRotate}
             onClose={onClose}
             enableDownload={!hideDownload}
+            onDownload={onDownload}
+            fileName={fileName}
             enableZoom={!hideZoom}
             enableRotate={!!showRotate}
           />

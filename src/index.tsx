@@ -39,6 +39,8 @@ export class LightBoxWithImage extends Component<
       hideZoom,
       showRotate,
       imageBackgroundColor,
+      onDownload,
+      fileName,
     } = this.props;
     const { modalOpen } = this.state;
 
@@ -62,6 +64,8 @@ export class LightBoxWithImage extends Component<
             medium={medium}
             large={large}
             alt={alt}
+            fileName={fileName}
+            onDownload={onDownload}
             onClose={this.toggleModal}
             hideDownload={hideDownload}
             hideZoom={hideZoom}

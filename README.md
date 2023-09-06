@@ -31,8 +31,8 @@ You need to bring your own `Set` and `fetch` polyfills if you use old Internet E
 
 - [x] Typescript
 - [ ] Support multiple images with action (prev and next)
-- [ ] Add on download
-- [ ] Add named download
+- [x] Add on download
+- [x] Custom file name when downloading the image
 - [ ] Disable close by OnClick
 - [ ] Control max width by Props
 - [x] Support props `lightboxClassName` in Lightbox component
