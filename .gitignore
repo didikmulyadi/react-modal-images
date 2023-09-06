@@ -5,6 +5,7 @@
 /node_modules
 /umd
 /dist
+/public
 npm-debug.log*
 .vscode
 cypress/screenshots
