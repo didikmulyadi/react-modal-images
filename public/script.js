@@ -239,20 +239,20 @@
           {
             Object.freeze(emptyObject);
           }
-          function Component5(props, context, updater) {
+          function Component7(props, context, updater) {
             this.props = props;
             this.context = context;
             this.refs = emptyObject;
             this.updater = updater || ReactNoopUpdateQueue;
           }
-          Component5.prototype.isReactComponent = {};
-          Component5.prototype.setState = function(partialState, callback) {
+          Component7.prototype.isReactComponent = {};
+          Component7.prototype.setState = function(partialState, callback) {
             if (typeof partialState !== "object" && typeof partialState !== "function" && partialState != null) {
               throw new Error("setState(...): takes an object of state variables to update or a function which returns an object of state variables.");
             }
             this.updater.enqueueSetState(this, partialState, callback, "setState");
           };
-          Component5.prototype.forceUpdate = function(callback) {
+          Component7.prototype.forceUpdate = function(callback) {
             this.updater.enqueueForceUpdate(this, callback, "forceUpdate");
           };
           {
@@ -261,7 +261,7 @@
               replaceState: ["replaceState", "Refactor your code to use setState instead (see https://github.com/facebook/react/issues/3236)."]
             };
             var defineDeprecationWarning = function(methodName, info) {
-              Object.defineProperty(Component5.prototype, methodName, {
+              Object.defineProperty(Component7.prototype, methodName, {
                 get: function() {
                   warn("%s(...) is deprecated in plain JavaScript React classes. %s", info[0], info[1]);
                   return void 0;
@@ -276,7 +276,7 @@
           }
           function ComponentDummy() {
           }
-          ComponentDummy.prototype = Component5.prototype;
+          ComponentDummy.prototype = Component7.prototype;
           function PureComponent(props, context, updater) {
             this.props = props;
             this.context = context;
@@ -285,7 +285,7 @@
           }
           var pureComponentPrototype = PureComponent.prototype = new ComponentDummy();
           pureComponentPrototype.constructor = PureComponent;
-          assign(pureComponentPrototype, Component5.prototype);
+          assign(pureComponentPrototype, Component7.prototype);
           pureComponentPrototype.isPureReactComponent = true;
           function createRef() {
             var refObject = {
@@ -1350,8 +1350,8 @@
               return describeNativeComponentFrame(fn, false);
             }
           }
-          function shouldConstruct(Component6) {
-            var prototype = Component6.prototype;
+          function shouldConstruct(Component8) {
+            var prototype = Component8.prototype;
             return !!(prototype && prototype.isReactComponent);
           }
           function describeUnknownElementTypeFrameInDEV(type, source, ownerFn) {
@@ -1404,7 +1404,7 @@
               }
             }
           }
-          function checkPropTypes(typeSpecs, values, location, componentName, element) {
+          function checkPropTypes(typeSpecs, values, location2, componentName, element) {
             {
               var has = Function.call.bind(hasOwnProperty);
               for (var typeSpecName in typeSpecs) {
@@ -1412,23 +1412,23 @@
                   var error$1 = void 0;
                   try {
                     if (typeof typeSpecs[typeSpecName] !== "function") {
-                      var err = Error((componentName || "React class") + ": " + location + " type `" + typeSpecName + "` is invalid; it must be a function, usually from the `prop-types` package, but received `" + typeof typeSpecs[typeSpecName] + "`.This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.");
+                      var err = Error((componentName || "React class") + ": " + location2 + " type `" + typeSpecName + "` is invalid; it must be a function, usually from the `prop-types` package, but received `" + typeof typeSpecs[typeSpecName] + "`.This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.");
                       err.name = "Invariant Violation";
                       throw err;
                     }
-                    error$1 = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED");
+                    error$1 = typeSpecs[typeSpecName](values, typeSpecName, componentName, location2, null, "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED");
                   } catch (ex) {
                     error$1 = ex;
                   }
                   if (error$1 && !(error$1 instanceof Error)) {
                     setCurrentlyValidatingElement(element);
-                    error("%s: type specification of %s `%s` is invalid; the type checker function must return `null` or an `Error` but returned a %s. You may have forgotten to pass an argument to the type checker creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and shape all require an argument).", componentName || "React class", location, typeSpecName, typeof error$1);
+                    error("%s: type specification of %s `%s` is invalid; the type checker function must return `null` or an `Error` but returned a %s. You may have forgotten to pass an argument to the type checker creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and shape all require an argument).", componentName || "React class", location2, typeSpecName, typeof error$1);
                     setCurrentlyValidatingElement(null);
                   }
                   if (error$1 instanceof Error && !(error$1.message in loggedTypeFailures)) {
                     loggedTypeFailures[error$1.message] = true;
                     setCurrentlyValidatingElement(element);
-                    error("Failed %s type: %s", location, error$1.message);
+                    error("Failed %s type: %s", location2, error$1.message);
                     setCurrentlyValidatingElement(null);
                   }
                 }
@@ -1857,7 +1857,7 @@
             only: onlyChild
           };
           exports.Children = Children;
-          exports.Component = Component5;
+          exports.Component = Component7;
           exports.Fragment = REACT_FRAGMENT_TYPE;
           exports.Profiler = REACT_PROFILER_TYPE;
           exports.PureComponent = PureComponent;
@@ -2383,9 +2383,9 @@
           if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") {
             __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
           }
-          var React7 = require_react();
+          var React9 = require_react();
           var Scheduler = require_scheduler();
-          var ReactSharedInternals = React7.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+          var ReactSharedInternals = React9.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
           var suppressWarning = false;
           function setSuppressWarning(newSuppressWarning) {
             {
@@ -3420,8 +3420,8 @@
               return describeNativeComponentFrame(fn, false);
             }
           }
-          function shouldConstruct(Component5) {
-            var prototype = Component5.prototype;
+          function shouldConstruct(Component7) {
+            var prototype = Component7.prototype;
             return !!(prototype && prototype.isReactComponent);
           }
           function describeUnknownElementTypeFrameInDEV(type, source, ownerFn) {
@@ -3990,7 +3990,7 @@
             {
               if (props.value == null) {
                 if (typeof props.children === "object" && props.children !== null) {
-                  React7.Children.forEach(props.children, function(child) {
+                  React9.Children.forEach(props.children, function(child) {
                     if (child == null) {
                       return;
                     }
@@ -10774,7 +10774,7 @@
               }
             }
           }
-          function checkPropTypes(typeSpecs, values, location, componentName, element) {
+          function checkPropTypes(typeSpecs, values, location2, componentName, element) {
             {
               var has2 = Function.call.bind(hasOwnProperty);
               for (var typeSpecName in typeSpecs) {
@@ -10782,23 +10782,23 @@
                   var error$1 = void 0;
                   try {
                     if (typeof typeSpecs[typeSpecName] !== "function") {
-                      var err = Error((componentName || "React class") + ": " + location + " type `" + typeSpecName + "` is invalid; it must be a function, usually from the `prop-types` package, but received `" + typeof typeSpecs[typeSpecName] + "`.This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.");
+                      var err = Error((componentName || "React class") + ": " + location2 + " type `" + typeSpecName + "` is invalid; it must be a function, usually from the `prop-types` package, but received `" + typeof typeSpecs[typeSpecName] + "`.This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.");
                       err.name = "Invariant Violation";
                       throw err;
                     }
-                    error$1 = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED");
+                    error$1 = typeSpecs[typeSpecName](values, typeSpecName, componentName, location2, null, "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED");
                   } catch (ex) {
                     error$1 = ex;
                   }
                   if (error$1 && !(error$1 instanceof Error)) {
                     setCurrentlyValidatingElement(element);
-                    error("%s: type specification of %s `%s` is invalid; the type checker function must return `null` or an `Error` but returned a %s. You may have forgotten to pass an argument to the type checker creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and shape all require an argument).", componentName || "React class", location, typeSpecName, typeof error$1);
+                    error("%s: type specification of %s `%s` is invalid; the type checker function must return `null` or an `Error` but returned a %s. You may have forgotten to pass an argument to the type checker creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and shape all require an argument).", componentName || "React class", location2, typeSpecName, typeof error$1);
                     setCurrentlyValidatingElement(null);
                   }
                   if (error$1 instanceof Error && !(error$1.message in loggedTypeFailures)) {
                     loggedTypeFailures[error$1.message] = true;
                     setCurrentlyValidatingElement(element);
-                    error("Failed %s type: %s", location, error$1.message);
+                    error("Failed %s type: %s", location2, error$1.message);
                     setCurrentlyValidatingElement(null);
                   }
                 }
@@ -10854,9 +10854,9 @@
           var contextStackCursor = createCursor(emptyContextObject);
           var didPerformWorkStackCursor = createCursor(false);
           var previousContext = emptyContextObject;
-          function getUnmaskedContext(workInProgress2, Component5, didPushOwnContextIfProvider) {
+          function getUnmaskedContext(workInProgress2, Component7, didPushOwnContextIfProvider) {
             {
-              if (didPushOwnContextIfProvider && isContextProvider(Component5)) {
+              if (didPushOwnContextIfProvider && isContextProvider(Component7)) {
                 return previousContext;
               }
               return contextStackCursor.current;
@@ -10993,8 +10993,8 @@
                   case HostRoot:
                     return node.stateNode.context;
                   case ClassComponent: {
-                    var Component5 = node.type;
-                    if (isContextProvider(Component5)) {
+                    var Component7 = node.type;
+                    if (isContextProvider(Component7)) {
                       return node.stateNode.__reactInternalMemoizedMergedChildContext;
                     }
                     break;
@@ -11756,10 +11756,10 @@
               pendingLegacyContextWarning = /* @__PURE__ */ new Map();
             };
           }
-          function resolveDefaultProps(Component5, baseProps) {
-            if (Component5 && Component5.defaultProps) {
+          function resolveDefaultProps(Component7, baseProps) {
+            if (Component7 && Component7.defaultProps) {
               var props = assign({}, baseProps);
-              var defaultProps = Component5.defaultProps;
+              var defaultProps = Component7.defaultProps;
               for (var propName in defaultProps) {
                 if (props[propName] === void 0) {
                   props[propName] = defaultProps[propName];
@@ -12437,7 +12437,7 @@
             }
           }
           var fakeInternalInstance = {};
-          var emptyRefsObject = new React7.Component().refs;
+          var emptyRefsObject = new React9.Component().refs;
           var didWarnAboutStateAssignmentForComponent;
           var didWarnAboutUninitializedState;
           var didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate;
@@ -14054,7 +14054,7 @@
             }
             return true;
           }
-          function renderWithHooks(current2, workInProgress2, Component5, props, secondArg, nextRenderLanes) {
+          function renderWithHooks(current2, workInProgress2, Component7, props, secondArg, nextRenderLanes) {
             renderLanes = nextRenderLanes;
             currentlyRenderingFiber$1 = workInProgress2;
             {
@@ -14074,7 +14074,7 @@
                 ReactCurrentDispatcher$1.current = HooksDispatcherOnMountInDEV;
               }
             }
-            var children = Component5(props, secondArg);
+            var children = Component7(props, secondArg);
             if (didScheduleRenderPhaseUpdateDuringThisPass) {
               var numberOfReRenders = 0;
               do {
@@ -14094,7 +14094,7 @@
                   hookTypesUpdateIndexDev = -1;
                 }
                 ReactCurrentDispatcher$1.current = HooksDispatcherOnRerenderInDEV;
-                children = Component5(props, secondArg);
+                children = Component7(props, secondArg);
               } while (didScheduleRenderPhaseUpdateDuringThisPass);
             }
             ReactCurrentDispatcher$1.current = ContextOnlyDispatcher;
@@ -16204,22 +16204,22 @@
             workInProgress2.child = reconcileChildFibers(workInProgress2, current2.child, null, renderLanes2);
             workInProgress2.child = reconcileChildFibers(workInProgress2, null, nextChildren, renderLanes2);
           }
-          function updateForwardRef(current2, workInProgress2, Component5, nextProps, renderLanes2) {
+          function updateForwardRef(current2, workInProgress2, Component7, nextProps, renderLanes2) {
             {
               if (workInProgress2.type !== workInProgress2.elementType) {
-                var innerPropTypes = Component5.propTypes;
+                var innerPropTypes = Component7.propTypes;
                 if (innerPropTypes) {
                   checkPropTypes(
                     innerPropTypes,
                     nextProps,
                     // Resolved props
                     "prop",
-                    getComponentNameFromType(Component5)
+                    getComponentNameFromType(Component7)
                   );
                 }
               }
             }
-            var render2 = Component5.render;
+            var render2 = Component7.render;
             var ref = workInProgress2.ref;
             var nextChildren;
             var hasId;
@@ -16257,11 +16257,11 @@
             reconcileChildren(current2, workInProgress2, nextChildren, renderLanes2);
             return workInProgress2.child;
           }
-          function updateMemoComponent(current2, workInProgress2, Component5, nextProps, renderLanes2) {
+          function updateMemoComponent(current2, workInProgress2, Component7, nextProps, renderLanes2) {
             if (current2 === null) {
-              var type = Component5.type;
-              if (isSimpleFunctionComponent(type) && Component5.compare === null && // SimpleMemoComponent codepath doesn't resolve outer props either.
-              Component5.defaultProps === void 0) {
+              var type = Component7.type;
+              if (isSimpleFunctionComponent(type) && Component7.compare === null && // SimpleMemoComponent codepath doesn't resolve outer props either.
+              Component7.defaultProps === void 0) {
                 var resolvedType = type;
                 {
                   resolvedType = resolveFunctionForHotReloading(type);
@@ -16285,14 +16285,14 @@
                   );
                 }
               }
-              var child = createFiberFromTypeAndProps(Component5.type, null, nextProps, workInProgress2, workInProgress2.mode, renderLanes2);
+              var child = createFiberFromTypeAndProps(Component7.type, null, nextProps, workInProgress2, workInProgress2.mode, renderLanes2);
               child.ref = workInProgress2.ref;
               child.return = workInProgress2;
               workInProgress2.child = child;
               return child;
             }
             {
-              var _type = Component5.type;
+              var _type = Component7.type;
               var _innerPropTypes = _type.propTypes;
               if (_innerPropTypes) {
                 checkPropTypes(
@@ -16308,7 +16308,7 @@
             var hasScheduledUpdateOrContext = checkScheduledUpdateOrContext(current2, renderLanes2);
             if (!hasScheduledUpdateOrContext) {
               var prevProps = currentChild.memoizedProps;
-              var compare = Component5.compare;
+              var compare = Component7.compare;
               compare = compare !== null ? compare : shallowEqual;
               if (compare(prevProps, nextProps) && current2.ref === workInProgress2.ref) {
                 return bailoutOnAlreadyFinishedWork(current2, workInProgress2, renderLanes2);
@@ -16321,7 +16321,7 @@
             workInProgress2.child = newChild;
             return newChild;
           }
-          function updateSimpleMemoComponent(current2, workInProgress2, Component5, nextProps, renderLanes2) {
+          function updateSimpleMemoComponent(current2, workInProgress2, Component7, nextProps, renderLanes2) {
             {
               if (workInProgress2.type !== workInProgress2.elementType) {
                 var outerMemoType = workInProgress2.elementType;
@@ -16361,7 +16361,7 @@
                 }
               }
             }
-            return updateFunctionComponent(current2, workInProgress2, Component5, nextProps, renderLanes2);
+            return updateFunctionComponent(current2, workInProgress2, Component7, nextProps, renderLanes2);
           }
           function updateOffscreenComponent(current2, workInProgress2, renderLanes2) {
             var nextProps = workInProgress2.pendingProps;
@@ -16451,24 +16451,24 @@
               }
             }
           }
-          function updateFunctionComponent(current2, workInProgress2, Component5, nextProps, renderLanes2) {
+          function updateFunctionComponent(current2, workInProgress2, Component7, nextProps, renderLanes2) {
             {
               if (workInProgress2.type !== workInProgress2.elementType) {
-                var innerPropTypes = Component5.propTypes;
+                var innerPropTypes = Component7.propTypes;
                 if (innerPropTypes) {
                   checkPropTypes(
                     innerPropTypes,
                     nextProps,
                     // Resolved props
                     "prop",
-                    getComponentNameFromType(Component5)
+                    getComponentNameFromType(Component7)
                   );
                 }
               }
             }
             var context;
             {
-              var unmaskedContext = getUnmaskedContext(workInProgress2, Component5, true);
+              var unmaskedContext = getUnmaskedContext(workInProgress2, Component7, true);
               context = getMaskedContext(workInProgress2, unmaskedContext);
             }
             var nextChildren;
@@ -16480,12 +16480,12 @@
             {
               ReactCurrentOwner$1.current = workInProgress2;
               setIsRendering(true);
-              nextChildren = renderWithHooks(current2, workInProgress2, Component5, nextProps, context, renderLanes2);
+              nextChildren = renderWithHooks(current2, workInProgress2, Component7, nextProps, context, renderLanes2);
               hasId = checkDidRenderIdHook();
               if (workInProgress2.mode & StrictLegacyMode) {
                 setIsStrictModeForDevtools(true);
                 try {
-                  nextChildren = renderWithHooks(current2, workInProgress2, Component5, nextProps, context, renderLanes2);
+                  nextChildren = renderWithHooks(current2, workInProgress2, Component7, nextProps, context, renderLanes2);
                   hasId = checkDidRenderIdHook();
                 } finally {
                   setIsStrictModeForDevtools(false);
@@ -16507,7 +16507,7 @@
             reconcileChildren(current2, workInProgress2, nextChildren, renderLanes2);
             return workInProgress2.child;
           }
-          function updateClassComponent(current2, workInProgress2, Component5, nextProps, renderLanes2) {
+          function updateClassComponent(current2, workInProgress2, Component7, nextProps, renderLanes2) {
             {
               switch (shouldError(workInProgress2)) {
                 case false: {
@@ -16530,20 +16530,20 @@
                 }
               }
               if (workInProgress2.type !== workInProgress2.elementType) {
-                var innerPropTypes = Component5.propTypes;
+                var innerPropTypes = Component7.propTypes;
                 if (innerPropTypes) {
                   checkPropTypes(
                     innerPropTypes,
                     nextProps,
                     // Resolved props
                     "prop",
-                    getComponentNameFromType(Component5)
+                    getComponentNameFromType(Component7)
                   );
                 }
               }
             }
             var hasContext;
-            if (isContextProvider(Component5)) {
+            if (isContextProvider(Component7)) {
               hasContext = true;
               pushContextProvider(workInProgress2);
             } else {
@@ -16554,15 +16554,15 @@
             var shouldUpdate;
             if (instance === null) {
               resetSuspendedCurrentOnMountInLegacyMode(current2, workInProgress2);
-              constructClassInstance(workInProgress2, Component5, nextProps);
-              mountClassInstance(workInProgress2, Component5, nextProps, renderLanes2);
+              constructClassInstance(workInProgress2, Component7, nextProps);
+              mountClassInstance(workInProgress2, Component7, nextProps, renderLanes2);
               shouldUpdate = true;
             } else if (current2 === null) {
-              shouldUpdate = resumeMountClassInstance(workInProgress2, Component5, nextProps, renderLanes2);
+              shouldUpdate = resumeMountClassInstance(workInProgress2, Component7, nextProps, renderLanes2);
             } else {
-              shouldUpdate = updateClassInstance(current2, workInProgress2, Component5, nextProps, renderLanes2);
+              shouldUpdate = updateClassInstance(current2, workInProgress2, Component7, nextProps, renderLanes2);
             }
-            var nextUnitOfWork = finishClassComponent(current2, workInProgress2, Component5, shouldUpdate, hasContext, renderLanes2);
+            var nextUnitOfWork = finishClassComponent(current2, workInProgress2, Component7, shouldUpdate, hasContext, renderLanes2);
             {
               var inst = workInProgress2.stateNode;
               if (shouldUpdate && inst.props !== nextProps) {
@@ -16574,19 +16574,19 @@
             }
             return nextUnitOfWork;
           }
-          function finishClassComponent(current2, workInProgress2, Component5, shouldUpdate, hasContext, renderLanes2) {
+          function finishClassComponent(current2, workInProgress2, Component7, shouldUpdate, hasContext, renderLanes2) {
             markRef(current2, workInProgress2);
             var didCaptureError = (workInProgress2.flags & DidCapture) !== NoFlags;
             if (!shouldUpdate && !didCaptureError) {
               if (hasContext) {
-                invalidateContextProvider(workInProgress2, Component5, false);
+                invalidateContextProvider(workInProgress2, Component7, false);
               }
               return bailoutOnAlreadyFinishedWork(current2, workInProgress2, renderLanes2);
             }
             var instance = workInProgress2.stateNode;
             ReactCurrentOwner$1.current = workInProgress2;
             var nextChildren;
-            if (didCaptureError && typeof Component5.getDerivedStateFromError !== "function") {
+            if (didCaptureError && typeof Component7.getDerivedStateFromError !== "function") {
               nextChildren = null;
               {
                 stopProfilerTimerIfRunning();
@@ -16620,7 +16620,7 @@
             }
             workInProgress2.memoizedState = instance.state;
             if (hasContext) {
-              invalidateContextProvider(workInProgress2, Component5, true);
+              invalidateContextProvider(workInProgress2, Component7, true);
             }
             return workInProgress2.child;
           }
@@ -16720,45 +16720,45 @@
             var lazyComponent = elementType;
             var payload = lazyComponent._payload;
             var init = lazyComponent._init;
-            var Component5 = init(payload);
-            workInProgress2.type = Component5;
-            var resolvedTag = workInProgress2.tag = resolveLazyComponentTag(Component5);
-            var resolvedProps = resolveDefaultProps(Component5, props);
+            var Component7 = init(payload);
+            workInProgress2.type = Component7;
+            var resolvedTag = workInProgress2.tag = resolveLazyComponentTag(Component7);
+            var resolvedProps = resolveDefaultProps(Component7, props);
             var child;
             switch (resolvedTag) {
               case FunctionComponent: {
                 {
-                  validateFunctionComponentInDev(workInProgress2, Component5);
-                  workInProgress2.type = Component5 = resolveFunctionForHotReloading(Component5);
+                  validateFunctionComponentInDev(workInProgress2, Component7);
+                  workInProgress2.type = Component7 = resolveFunctionForHotReloading(Component7);
                 }
-                child = updateFunctionComponent(null, workInProgress2, Component5, resolvedProps, renderLanes2);
+                child = updateFunctionComponent(null, workInProgress2, Component7, resolvedProps, renderLanes2);
                 return child;
               }
               case ClassComponent: {
                 {
-                  workInProgress2.type = Component5 = resolveClassForHotReloading(Component5);
+                  workInProgress2.type = Component7 = resolveClassForHotReloading(Component7);
                 }
-                child = updateClassComponent(null, workInProgress2, Component5, resolvedProps, renderLanes2);
+                child = updateClassComponent(null, workInProgress2, Component7, resolvedProps, renderLanes2);
                 return child;
               }
               case ForwardRef: {
                 {
-                  workInProgress2.type = Component5 = resolveForwardRefForHotReloading(Component5);
+                  workInProgress2.type = Component7 = resolveForwardRefForHotReloading(Component7);
                 }
-                child = updateForwardRef(null, workInProgress2, Component5, resolvedProps, renderLanes2);
+                child = updateForwardRef(null, workInProgress2, Component7, resolvedProps, renderLanes2);
                 return child;
               }
               case MemoComponent: {
                 {
                   if (workInProgress2.type !== workInProgress2.elementType) {
-                    var outerPropTypes = Component5.propTypes;
+                    var outerPropTypes = Component7.propTypes;
                     if (outerPropTypes) {
                       checkPropTypes(
                         outerPropTypes,
                         resolvedProps,
                         // Resolved for outer only
                         "prop",
-                        getComponentNameFromType(Component5)
+                        getComponentNameFromType(Component7)
                       );
                     }
                   }
@@ -16766,8 +16766,8 @@
                 child = updateMemoComponent(
                   null,
                   workInProgress2,
-                  Component5,
-                  resolveDefaultProps(Component5.type, resolvedProps),
+                  Component7,
+                  resolveDefaultProps(Component7.type, resolvedProps),
                   // The inner type can have defaults too
                   renderLanes2
                 );
@@ -16776,33 +16776,33 @@
             }
             var hint = "";
             {
-              if (Component5 !== null && typeof Component5 === "object" && Component5.$$typeof === REACT_LAZY_TYPE) {
+              if (Component7 !== null && typeof Component7 === "object" && Component7.$$typeof === REACT_LAZY_TYPE) {
                 hint = " Did you wrap a component in React.lazy() more than once?";
               }
             }
-            throw new Error("Element type is invalid. Received a promise that resolves to: " + Component5 + ". " + ("Lazy element type must resolve to a class or function." + hint));
+            throw new Error("Element type is invalid. Received a promise that resolves to: " + Component7 + ". " + ("Lazy element type must resolve to a class or function." + hint));
           }
-          function mountIncompleteClassComponent(_current, workInProgress2, Component5, nextProps, renderLanes2) {
+          function mountIncompleteClassComponent(_current, workInProgress2, Component7, nextProps, renderLanes2) {
             resetSuspendedCurrentOnMountInLegacyMode(_current, workInProgress2);
             workInProgress2.tag = ClassComponent;
             var hasContext;
-            if (isContextProvider(Component5)) {
+            if (isContextProvider(Component7)) {
               hasContext = true;
               pushContextProvider(workInProgress2);
             } else {
               hasContext = false;
             }
             prepareToReadContext(workInProgress2, renderLanes2);
-            constructClassInstance(workInProgress2, Component5, nextProps);
-            mountClassInstance(workInProgress2, Component5, nextProps, renderLanes2);
-            return finishClassComponent(null, workInProgress2, Component5, true, hasContext, renderLanes2);
+            constructClassInstance(workInProgress2, Component7, nextProps);
+            mountClassInstance(workInProgress2, Component7, nextProps, renderLanes2);
+            return finishClassComponent(null, workInProgress2, Component7, true, hasContext, renderLanes2);
           }
-          function mountIndeterminateComponent(_current, workInProgress2, Component5, renderLanes2) {
+          function mountIndeterminateComponent(_current, workInProgress2, Component7, renderLanes2) {
             resetSuspendedCurrentOnMountInLegacyMode(_current, workInProgress2);
             var props = workInProgress2.pendingProps;
             var context;
             {
-              var unmaskedContext = getUnmaskedContext(workInProgress2, Component5, false);
+              var unmaskedContext = getUnmaskedContext(workInProgress2, Component7, false);
               context = getMaskedContext(workInProgress2, unmaskedContext);
             }
             prepareToReadContext(workInProgress2, renderLanes2);
@@ -16812,8 +16812,8 @@
               markComponentRenderStarted(workInProgress2);
             }
             {
-              if (Component5.prototype && typeof Component5.prototype.render === "function") {
-                var componentName = getComponentNameFromType(Component5) || "Unknown";
+              if (Component7.prototype && typeof Component7.prototype.render === "function") {
+                var componentName = getComponentNameFromType(Component7) || "Unknown";
                 if (!didWarnAboutBadClass[componentName]) {
                   error("The <%s /> component appears to have a render method, but doesn't extend React.Component. This is likely to cause errors. Change %s to extend React.Component instead.", componentName, componentName);
                   didWarnAboutBadClass[componentName] = true;
@@ -16824,7 +16824,7 @@
               }
               setIsRendering(true);
               ReactCurrentOwner$1.current = workInProgress2;
-              value = renderWithHooks(null, workInProgress2, Component5, props, context, renderLanes2);
+              value = renderWithHooks(null, workInProgress2, Component7, props, context, renderLanes2);
               hasId = checkDidRenderIdHook();
               setIsRendering(false);
             }
@@ -16834,7 +16834,7 @@
             workInProgress2.flags |= PerformedWork;
             {
               if (typeof value === "object" && value !== null && typeof value.render === "function" && value.$$typeof === void 0) {
-                var _componentName = getComponentNameFromType(Component5) || "Unknown";
+                var _componentName = getComponentNameFromType(Component7) || "Unknown";
                 if (!didWarnAboutModulePatternComponent[_componentName]) {
                   error("The <%s /> component appears to be a function component that returns a class instance. Change %s to a class that extends React.Component instead. If you can't use a class try assigning the prototype on the function as a workaround. `%s.prototype = React.Component.prototype`. Don't use an arrow function since it cannot be called with `new` by React.", _componentName, _componentName, _componentName);
                   didWarnAboutModulePatternComponent[_componentName] = true;
@@ -16847,7 +16847,7 @@
               typeof value === "object" && value !== null && typeof value.render === "function" && value.$$typeof === void 0
             ) {
               {
-                var _componentName2 = getComponentNameFromType(Component5) || "Unknown";
+                var _componentName2 = getComponentNameFromType(Component7) || "Unknown";
                 if (!didWarnAboutModulePatternComponent[_componentName2]) {
                   error("The <%s /> component appears to be a function component that returns a class instance. Change %s to a class that extends React.Component instead. If you can't use a class try assigning the prototype on the function as a workaround. `%s.prototype = React.Component.prototype`. Don't use an arrow function since it cannot be called with `new` by React.", _componentName2, _componentName2, _componentName2);
                   didWarnAboutModulePatternComponent[_componentName2] = true;
@@ -16857,7 +16857,7 @@
               workInProgress2.memoizedState = null;
               workInProgress2.updateQueue = null;
               var hasContext = false;
-              if (isContextProvider(Component5)) {
+              if (isContextProvider(Component7)) {
                 hasContext = true;
                 pushContextProvider(workInProgress2);
               } else {
@@ -16866,15 +16866,15 @@
               workInProgress2.memoizedState = value.state !== null && value.state !== void 0 ? value.state : null;
               initializeUpdateQueue(workInProgress2);
               adoptClassInstance(workInProgress2, value);
-              mountClassInstance(workInProgress2, Component5, props, renderLanes2);
-              return finishClassComponent(null, workInProgress2, Component5, true, hasContext, renderLanes2);
+              mountClassInstance(workInProgress2, Component7, props, renderLanes2);
+              return finishClassComponent(null, workInProgress2, Component7, true, hasContext, renderLanes2);
             } else {
               workInProgress2.tag = FunctionComponent;
               {
                 if (workInProgress2.mode & StrictLegacyMode) {
                   setIsStrictModeForDevtools(true);
                   try {
-                    value = renderWithHooks(null, workInProgress2, Component5, props, context, renderLanes2);
+                    value = renderWithHooks(null, workInProgress2, Component7, props, context, renderLanes2);
                     hasId = checkDidRenderIdHook();
                   } finally {
                     setIsStrictModeForDevtools(false);
@@ -16886,16 +16886,16 @@
               }
               reconcileChildren(null, workInProgress2, value, renderLanes2);
               {
-                validateFunctionComponentInDev(workInProgress2, Component5);
+                validateFunctionComponentInDev(workInProgress2, Component7);
               }
               return workInProgress2.child;
             }
           }
-          function validateFunctionComponentInDev(workInProgress2, Component5) {
+          function validateFunctionComponentInDev(workInProgress2, Component7) {
             {
-              if (Component5) {
-                if (Component5.childContextTypes) {
-                  error("%s(...): childContextTypes cannot be defined on a function component.", Component5.displayName || Component5.name || "Component");
+              if (Component7) {
+                if (Component7.childContextTypes) {
+                  error("%s(...): childContextTypes cannot be defined on a function component.", Component7.displayName || Component7.name || "Component");
                 }
               }
               if (workInProgress2.ref !== null) {
@@ -16914,15 +16914,15 @@
                   error("Function components cannot be given refs. Attempts to access this ref will fail. Did you mean to use React.forwardRef()?%s", info);
                 }
               }
-              if (typeof Component5.getDerivedStateFromProps === "function") {
-                var _componentName3 = getComponentNameFromType(Component5) || "Unknown";
+              if (typeof Component7.getDerivedStateFromProps === "function") {
+                var _componentName3 = getComponentNameFromType(Component7) || "Unknown";
                 if (!didWarnAboutGetDerivedStateOnFunctionComponent[_componentName3]) {
                   error("%s: Function components do not support getDerivedStateFromProps.", _componentName3);
                   didWarnAboutGetDerivedStateOnFunctionComponent[_componentName3] = true;
                 }
               }
-              if (typeof Component5.contextType === "object" && Component5.contextType !== null) {
-                var _componentName4 = getComponentNameFromType(Component5) || "Unknown";
+              if (typeof Component7.contextType === "object" && Component7.contextType !== null) {
+                var _componentName4 = getComponentNameFromType(Component7) || "Unknown";
                 if (!didWarnAboutContextTypeOnFunctionComponent[_componentName4]) {
                   error("%s: Function components do not support contextType.", _componentName4);
                   didWarnAboutContextTypeOnFunctionComponent[_componentName4] = true;
@@ -17684,8 +17684,8 @@
                 pushHostContext(workInProgress2);
                 break;
               case ClassComponent: {
-                var Component5 = workInProgress2.type;
-                if (isContextProvider(Component5)) {
+                var Component7 = workInProgress2.type;
+                if (isContextProvider(Component7)) {
                   pushContextProvider(workInProgress2);
                 }
                 break;
@@ -17812,10 +17812,10 @@
                 return mountLazyComponent(current2, workInProgress2, elementType, renderLanes2);
               }
               case FunctionComponent: {
-                var Component5 = workInProgress2.type;
+                var Component7 = workInProgress2.type;
                 var unresolvedProps = workInProgress2.pendingProps;
-                var resolvedProps = workInProgress2.elementType === Component5 ? unresolvedProps : resolveDefaultProps(Component5, unresolvedProps);
-                return updateFunctionComponent(current2, workInProgress2, Component5, resolvedProps, renderLanes2);
+                var resolvedProps = workInProgress2.elementType === Component7 ? unresolvedProps : resolveDefaultProps(Component7, unresolvedProps);
+                return updateFunctionComponent(current2, workInProgress2, Component7, resolvedProps, renderLanes2);
               }
               case ClassComponent: {
                 var _Component = workInProgress2.type;
@@ -18120,8 +18120,8 @@
                 bubbleProperties(workInProgress2);
                 return null;
               case ClassComponent: {
-                var Component5 = workInProgress2.type;
-                if (isContextProvider(Component5)) {
+                var Component7 = workInProgress2.type;
+                if (isContextProvider(Component7)) {
                   popContext(workInProgress2);
                 }
                 bubbleProperties(workInProgress2);
@@ -18439,8 +18439,8 @@
             popTreeContext(workInProgress2);
             switch (workInProgress2.tag) {
               case ClassComponent: {
-                var Component5 = workInProgress2.type;
-                if (isContextProvider(Component5)) {
+                var Component7 = workInProgress2.type;
+                if (isContextProvider(Component7)) {
                   popContext(workInProgress2);
                 }
                 var flags = workInProgress2.flags;
@@ -22127,18 +22127,18 @@
           var createFiber = function(tag, pendingProps, key, mode) {
             return new FiberNode(tag, pendingProps, key, mode);
           };
-          function shouldConstruct$1(Component5) {
-            var prototype = Component5.prototype;
+          function shouldConstruct$1(Component7) {
+            var prototype = Component7.prototype;
             return !!(prototype && prototype.isReactComponent);
           }
           function isSimpleFunctionComponent(type) {
             return typeof type === "function" && !shouldConstruct$1(type) && type.defaultProps === void 0;
           }
-          function resolveLazyComponentTag(Component5) {
-            if (typeof Component5 === "function") {
-              return shouldConstruct$1(Component5) ? ClassComponent : FunctionComponent;
-            } else if (Component5 !== void 0 && Component5 !== null) {
-              var $$typeof = Component5.$$typeof;
+          function resolveLazyComponentTag(Component7) {
+            if (typeof Component7 === "function") {
+              return shouldConstruct$1(Component7) ? ClassComponent : FunctionComponent;
+            } else if (Component7 !== void 0 && Component7 !== null) {
+              var $$typeof = Component7.$$typeof;
               if ($$typeof === REACT_FORWARD_REF_TYPE) {
                 return ForwardRef;
               }
@@ -22575,9 +22575,9 @@
             var fiber = get(parentComponent);
             var parentContext = findCurrentUnmaskedContext(fiber);
             if (fiber.tag === ClassComponent) {
-              var Component5 = fiber.type;
-              if (isContextProvider(Component5)) {
-                return processChildContext(fiber, Component5, parentContext);
+              var Component7 = fiber.type;
+              if (isContextProvider(Component7)) {
+                return processChildContext(fiber, Component7, parentContext);
               }
             }
             return parentContext;
@@ -23509,10 +23509,7 @@
   });
 
   // src/dev.tsx
-  var import_react7 = __toESM(require_react());
-
-  // src/index.tsx
-  var import_react6 = __toESM(require_react());
+  var import_react9 = __toESM(require_react());
 
   // src/components/Lightbox.tsx
   var import_react5 = __toESM(require_react());
@@ -23565,8 +23562,7 @@
     width: 100%;
   }
 
-  .__react_modal_image__modal_content img, 
-  .__react_modal_image__modal_content svg {
+  .__react_modal_image__modal_content img {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -23574,6 +23570,28 @@
     -webkit-transform: translate3d(-50%, -50%, 0);
     -ms-transform: translate3d(-50%, -50%, 0);
     overflow: hidden;
+  }
+
+  .__react_modal_image__action {
+    position: absolute;
+    top: 50%;
+    cursor: pointer;
+  }
+
+  .__react_modal_image__prev_arrow  {
+    left: 20%;
+  }
+
+  .__react_modal_image__next_arrow  {
+    right: 20%;
+  }
+
+  .__react_modal_image__next_arrow svg {
+    -moz-transform: scale(-1, 1);
+    -webkit-transform: scale(-1, 1);
+    -o-transform: scale(-1, 1);
+    -ms-transform: scale(-1, 1);
+    transform: scale(-1, 1);
   }
 
   .__react_modal_image__medium_img {
@@ -23699,28 +23717,80 @@
     /* @__PURE__ */ import_react2.default.createElement("path", { fill: "none", d: "M0 0h24v24H0V0zm0 0h24v24H0V0z" }),
     /* @__PURE__ */ import_react2.default.createElement("path", { d: "M7.47 21.49C4.2 19.93 1.86 16.76 1.5 13H0c.51 6.16 5.66 11 11.95 11 .23 0 .44-.02.66-.03L8.8 20.15l-1.33 1.34zM12.05 0c-.23 0-.44.02-.66.04l3.81 3.81 1.33-1.33C19.8 4.07 22.14 7.24 22.5 11H24c-.51-6.16-5.66-11-11.95-11zM16 14h2V8c0-1.11-.9-2-2-2h-6v2h6v6zm-8 2V4H6v2H4v2h2v8c0 1.1.89 2 2 2h8v2h2v-2h2v-2H8z" })
   );
+  var ArrowBack = ({
+    color = "#000000",
+    size = 24
+  }) => {
+    return /* @__PURE__ */ import_react2.default.createElement(
+      "svg",
+      {
+        xmlns: "http://www.w3.org/2000/svg",
+        viewBox: `0 0 24 24`,
+        height: `${size}px`,
+        width: `${size}px`,
+        fill: color
+      },
+      /* @__PURE__ */ import_react2.default.createElement("path", { d: `M0 0h24v24H0z`, fill: "none" }),
+      /* @__PURE__ */ import_react2.default.createElement("path", { d: "M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z" })
+    );
+  };
 
   // src/components/Header.tsx
-  var download = (href, name = null) => (event) => {
-    const link = document.createElement("a");
-    link.href = href;
-    link.download = name || href.split("/").slice(-1)[0];
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    event.preventDefault();
-  };
+  function isSameOrigin(href) {
+    if (!href.includes("http")) {
+      return true;
+    }
+    return document.location.hostname !== new URL(href).hostname;
+  }
   var Header = ({
     image,
+    fileName,
     alt,
     zoomed,
     toggleZoom,
     toggleRotate,
     onClose,
+    onDownload,
     enableDownload,
     enableZoom,
     enableRotate
-  }) => /* @__PURE__ */ import_react3.default.createElement("div", { className: "__react_modal_image__header" }, /* @__PURE__ */ import_react3.default.createElement("span", { className: "__react_modal_image__icon_menu" }, enableDownload && /* @__PURE__ */ import_react3.default.createElement("a", { href: image, download: true, onClick: download(image) }, /* @__PURE__ */ import_react3.default.createElement(DownloadIcon, null)), enableZoom && /* @__PURE__ */ import_react3.default.createElement("a", { onClick: toggleZoom }, zoomed ? /* @__PURE__ */ import_react3.default.createElement(ZoomOutIcon, null) : /* @__PURE__ */ import_react3.default.createElement(ZoomInIcon, null)), enableRotate && /* @__PURE__ */ import_react3.default.createElement("a", { onClick: toggleRotate }, /* @__PURE__ */ import_react3.default.createElement(RotateIcon, null)), /* @__PURE__ */ import_react3.default.createElement("a", { onClick: onClose }, /* @__PURE__ */ import_react3.default.createElement(CloseIcon, null))), alt && /* @__PURE__ */ import_react3.default.createElement("span", { className: "__react_modal_image__caption" }, alt));
+  }) => {
+    const download = (href, name = null) => (event) => {
+      event.preventDefault();
+      const fileName2 = name || href.split("/").slice(-1)[0];
+      const createAnchor = (_href, target = "") => {
+        const tmpAnchor = document.createElement("a");
+        tmpAnchor.setAttribute("download", fileName2);
+        tmpAnchor.setAttribute("href", _href);
+        tmpAnchor.setAttribute("target", target);
+        return tmpAnchor;
+      };
+      const clickAnchor = (tmpAnchor) => {
+        document.body.appendChild(tmpAnchor);
+        tmpAnchor.click();
+        document.body.removeChild(tmpAnchor);
+        onDownload?.();
+      };
+      if (!isSameOrigin(href)) {
+        const tmpAnchor = createAnchor(href);
+        clickAnchor(tmpAnchor);
+        return;
+      }
+      fetch(href).then((res) => {
+        if (!res.ok) {
+          clickAnchor(createAnchor(href, "_blank"));
+        }
+        return res.blob().then((blob) => {
+          clickAnchor(createAnchor(URL.createObjectURL(blob), "_blank"));
+        });
+      }).catch((err) => {
+        console.error(err);
+        console.error("Failed to download image from " + href);
+        clickAnchor(createAnchor(href, "_blank"));
+      });
+    };
+    return /* @__PURE__ */ import_react3.default.createElement("div", { className: "__react_modal_image__header" }, /* @__PURE__ */ import_react3.default.createElement("span", { className: "__react_modal_image__icon_menu" }, enableDownload && /* @__PURE__ */ import_react3.default.createElement("a", { href: image, download: true, onClick: download(image, fileName) }, /* @__PURE__ */ import_react3.default.createElement(DownloadIcon, null)), enableZoom && /* @__PURE__ */ import_react3.default.createElement("a", { onClick: toggleZoom }, zoomed ? /* @__PURE__ */ import_react3.default.createElement(ZoomOutIcon, null) : /* @__PURE__ */ import_react3.default.createElement(ZoomInIcon, null)), enableRotate && /* @__PURE__ */ import_react3.default.createElement("a", { onClick: toggleRotate }, /* @__PURE__ */ import_react3.default.createElement(RotateIcon, null)), /* @__PURE__ */ import_react3.default.createElement("a", { onClick: onClose }, /* @__PURE__ */ import_react3.default.createElement(CloseIcon, null))), alt && /* @__PURE__ */ import_react3.default.createElement("span", { className: "__react_modal_image__caption" }, alt));
+  };
   var Header_default = Header;
 
   // src/components/Image.tsx
@@ -23855,17 +23925,21 @@
     }
     render() {
       const {
+        lightboxClassName,
         medium,
         large,
         alt,
+        fileName,
+        onDownload,
         onClose,
         hideDownload,
         hideZoom,
         showRotate,
-        imageBackgroundColor = "black"
+        imageBackgroundColor = "black",
+        maxWidthImageLightBox
       } = this.props;
       const { move, zoomed, rotationDeg } = this.state;
-      return /* @__PURE__ */ import_react5.default.createElement("div", null, /* @__PURE__ */ import_react5.default.createElement(
+      return /* @__PURE__ */ import_react5.default.createElement("div", { className: lightboxClassName || "" }, /* @__PURE__ */ import_react5.default.createElement(
         StyleInjector,
         {
           name: "__react_modal_image__lightbox",
@@ -23910,7 +23984,8 @@
             style: {
               transform: `translate3d(-50%, -50%, 0) rotate(${rotationDeg}deg)`,
               WebkitTransform: `translate3d(-50%, -50%, 0) rotate(${rotationDeg}deg)`,
-              MsTransform: `translate3d(-50%, -50%, 0) rotate(${rotationDeg}deg)`
+              MsTransform: `translate3d(-50%, -50%, 0) rotate(${rotationDeg}deg)`,
+              maxWidth: maxWidthImageLightBox ?? ""
             }
           }
         )
@@ -23924,6 +23999,8 @@
           toggleRotate: this.toggleRotate,
           onClose,
           enableDownload: !hideDownload,
+          onDownload,
+          fileName,
           enableZoom: !hideZoom,
           enableRotate: !!showRotate
         }
@@ -23931,8 +24008,9 @@
     }
   };
 
-  // src/index.tsx
-  var LightBoxWithImage = class extends import_react6.Component {
+  // src/components/LightboxWithImage.tsx
+  var import_react6 = __toESM(require_react());
+  var LightboxWithImage = class extends import_react6.Component {
     constructor() {
       super(...arguments);
       this.state = { modalOpen: false };
@@ -23945,6 +24023,7 @@
     render() {
       const {
         className,
+        lightboxClassName,
         small,
         smallSrcSet,
         medium,
@@ -23953,7 +24032,9 @@
         hideDownload,
         hideZoom,
         showRotate,
-        imageBackgroundColor
+        imageBackgroundColor,
+        onDownload,
+        fileName
       } = this.props;
       const { modalOpen } = this.state;
       return /* @__PURE__ */ import_react6.default.createElement("div", null, /* @__PURE__ */ import_react6.default.createElement(
@@ -23973,10 +24054,316 @@
       ), modalOpen && /* @__PURE__ */ import_react6.default.createElement(
         Lightbox,
         {
+          lightboxClassName,
           medium,
           large,
           alt,
+          fileName,
+          onDownload,
           onClose: this.toggleModal,
+          hideDownload,
+          hideZoom,
+          showRotate,
+          imageBackgroundColor
+        }
+      ));
+    }
+  };
+
+  // src/components/LightboxGallery.tsx
+  var import_react7 = __toESM(require_react());
+  var LightboxGallery = class extends import_react7.Component {
+    constructor() {
+      super(...arguments);
+      this.state = {
+        move: { x: 0, y: 0 },
+        moveStart: void 0,
+        zoomed: false,
+        rotationDeg: 0,
+        selectedImageId: this.props.selectedImageId
+      };
+      this.handleKeyDown = (event) => {
+        if (event.keyCode === 27 || event.keyCode === 13) {
+          this.props?.onClose?.();
+        }
+      };
+      this.getCoordinatesIfOverImg = (event) => {
+        const point = event.changedTouches ? event.changedTouches[0] : event;
+        if (point.target.id !== "react-modal-image-img") {
+          return;
+        }
+        const dim = this.contentEl.getBoundingClientRect();
+        const x = point.clientX - dim.left;
+        const y = point.clientY - dim.top;
+        return { x, y };
+      };
+      this.handleMouseDownOrTouchStart = (event) => {
+        event.preventDefault();
+        if (event.touches && event.touches.length > 1) {
+          return;
+        }
+        const coords = this.getCoordinatesIfOverImg(event);
+        if (!coords) {
+        }
+        if (!this.state.zoomed) {
+          return;
+        }
+        this.setState((prev) => {
+          return {
+            moveStart: coords ? {
+              x: coords.x - prev.move.x,
+              y: coords.y - prev.move.y
+            } : { x: 0, y: 0 }
+          };
+        });
+      };
+      this.handleMouseMoveOrTouchMove = (event) => {
+        event.preventDefault();
+        if (!this.state.zoomed || !this.state.moveStart) {
+          return;
+        }
+        if (event.touches && event.touches.length > 1) {
+          return;
+        }
+        const coords = this.getCoordinatesIfOverImg(event);
+        if (!coords) {
+          return;
+        }
+        this.setState((prev) => {
+          return {
+            move: {
+              x: coords.x - (prev.moveStart?.x ?? 0),
+              y: coords.y - (prev.moveStart?.y ?? 0)
+            }
+          };
+        });
+      };
+      this.handleMouseUpOrTouchEnd = (_event) => {
+        this.setState({
+          moveStart: void 0
+        });
+      };
+      this.toggleZoom = (event) => {
+        event.preventDefault();
+        this.setState((prev) => ({
+          zoomed: !prev.zoomed,
+          // reset position if zoomed out
+          move: prev.zoomed ? { x: 0, y: 0 } : prev.move
+        }));
+      };
+      this.toggleRotate = (event) => {
+        event.preventDefault();
+        const { rotationDeg } = this.state;
+        if (rotationDeg === 360) {
+          this.setState({ rotationDeg: 90 });
+          return;
+        }
+        this.setState((prevState) => ({
+          rotationDeg: prevState.rotationDeg + 90
+        }));
+      };
+    }
+    componentDidMount() {
+      document.addEventListener("keydown", this.handleKeyDown, false);
+    }
+    componentWillUnmount() {
+      document.removeEventListener("keydown", this.handleKeyDown, false);
+    }
+    render() {
+      const {
+        lightboxClassName,
+        images,
+        onDownload,
+        onClose,
+        arrowOption,
+        hideDownload,
+        hideZoom,
+        showRotate,
+        imageBackgroundColor = "black"
+      } = this.props;
+      const { move, zoomed, rotationDeg } = this.state;
+      const selectedImageIndexTmp = images.findIndex(
+        (img) => img.id === this.state.selectedImageId
+      );
+      const selectedImageIndex = selectedImageIndexTmp < 0 ? 0 : selectedImageIndexTmp;
+      const selectedImage = images[selectedImageIndex];
+      const disablePrevious = selectedImageIndex === 0;
+      const disableNext = images.length === selectedImageIndex + 1;
+      const prev = (e) => {
+        e.stopPropagation();
+        this.setState({
+          selectedImageId: images[selectedImageIndex - 1].id
+        });
+      };
+      const next = (e) => {
+        e.stopPropagation();
+        this.setState({
+          selectedImageId: images[selectedImageIndex + 1].id
+        });
+      };
+      return /* @__PURE__ */ import_react7.default.createElement("div", { className: lightboxClassName || "" }, /* @__PURE__ */ import_react7.default.createElement(
+        StyleInjector,
+        {
+          name: "__react_modal_image__lightbox",
+          css: lightboxStyles({ imageBackgroundColor })
+        }
+      ), /* @__PURE__ */ import_react7.default.createElement("div", { className: "__react_modal_image__modal_container" }, /* @__PURE__ */ import_react7.default.createElement(
+        "div",
+        {
+          className: "__react_modal_image__modal_content",
+          onMouseDown: this.handleMouseDownOrTouchStart,
+          onMouseUp: this.handleMouseUpOrTouchEnd,
+          onMouseMove: this.handleMouseMoveOrTouchMove,
+          onTouchStart: this.handleMouseDownOrTouchStart,
+          onTouchEnd: this.handleMouseUpOrTouchEnd,
+          onTouchMove: this.handleMouseMoveOrTouchMove,
+          ref: (el) => {
+            this.contentEl = el;
+          }
+        },
+        zoomed && /* @__PURE__ */ import_react7.default.createElement(
+          Image,
+          {
+            id: "react-modal-image-img",
+            className: "__react_modal_image__large_img",
+            src: selectedImage.srcLarge ?? selectedImage.src,
+            style: {
+              transform: `translate3d(-50%, -50%, 0) translate3d(${move.x}px, ${move.y}px, 0) rotate(${rotationDeg}deg)`,
+              WebkitTransform: `translate3d(-50%, -50%, 0) translate3d(${move.x}px, ${move.y}px, 0) rotate(${rotationDeg}deg)`,
+              MsTransform: `translate3d(-50%, -50%, 0) translate3d(${move.x}px, ${move.y}px, 0) rotate(${rotationDeg}deg)`
+            },
+            handleDoubleClick: this.toggleZoom
+          }
+        ),
+        !zoomed && /* @__PURE__ */ import_react7.default.createElement(
+          "div",
+          {
+            className: "__react_modal_image__with-action-wrapper",
+            style: {
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "12px"
+            }
+          },
+          !disablePrevious && /* @__PURE__ */ import_react7.default.createElement(
+            "span",
+            {
+              onClick: prev,
+              className: "__react_modal_image__action __react_modal_image__prev_arrow"
+            },
+            /* @__PURE__ */ import_react7.default.createElement(ArrowBack, { ...arrowOption })
+          ),
+          /* @__PURE__ */ import_react7.default.createElement(
+            Image,
+            {
+              id: "react-modal-image-img",
+              className: "__react_modal_image__medium_img",
+              src: selectedImage.src,
+              handleDoubleClick: this.toggleZoom,
+              contextMenu: selectedImage.src,
+              style: {
+                transform: `translate3d(-50%, -50%, 0) rotate(${rotationDeg}deg)`,
+                WebkitTransform: `translate3d(-50%, -50%, 0) rotate(${rotationDeg}deg)`,
+                MsTransform: `translate3d(-50%, -50%, 0) rotate(${rotationDeg}deg)`,
+                maxWidth: "50%"
+              }
+            }
+          ),
+          !disableNext && /* @__PURE__ */ import_react7.default.createElement(
+            "span",
+            {
+              onClick: next,
+              className: "__react_modal_image__action __react_modal_image__next_arrow"
+            },
+            /* @__PURE__ */ import_react7.default.createElement(ArrowBack, { ...arrowOption })
+          )
+        )
+      ), /* @__PURE__ */ import_react7.default.createElement(
+        Header_default,
+        {
+          image: selectedImage.srcLarge ?? selectedImage.src,
+          alt: selectedImage.alt,
+          zoomed,
+          toggleZoom: this.toggleZoom,
+          toggleRotate: this.toggleRotate,
+          onClose,
+          enableDownload: !hideDownload,
+          onDownload,
+          fileName: selectedImage.fileName,
+          enableZoom: !hideZoom,
+          enableRotate: !!showRotate
+        }
+      )));
+    }
+  };
+
+  // src/components/LightboxGalleryWithImages.tsx
+  var import_react8 = __toESM(require_react());
+  var LightboxGalleryWithImages = class extends import_react8.Component {
+    constructor() {
+      super(...arguments);
+      this.state = { selectedImageId: "" };
+      this.toggleModal = (selectedImageId) => () => {
+        this.setState({
+          selectedImageId
+        });
+      };
+    }
+    render() {
+      const {
+        className,
+        fixedWith,
+        images,
+        hideDownload,
+        hideZoom,
+        showRotate,
+        imageBackgroundColor,
+        onDownload
+      } = this.props;
+      const { selectedImageId } = this.state;
+      return /* @__PURE__ */ import_react8.default.createElement("div", { id: "__react-modal-image-gallery" }, /* @__PURE__ */ import_react8.default.createElement(
+        "div",
+        {
+          style: {
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "6px"
+          }
+        },
+        images.map((img) => {
+          return /* @__PURE__ */ import_react8.default.createElement(
+            "img",
+            {
+              key: img.id,
+              className,
+              style: fixedWith ? {
+                cursor: "pointer",
+                width: fixedWith,
+                height: fixedWith,
+                objectFit: "cover"
+              } : {
+                cursor: "pointer",
+                maxWidth: "100%",
+                maxHeight: "100%"
+              },
+              onClick: this.toggleModal(img.id),
+              src: img.src,
+              alt: img.alt
+            }
+          );
+        })
+      ), selectedImageId && /* @__PURE__ */ import_react8.default.createElement(
+        LightboxGallery,
+        {
+          images,
+          selectedImageId,
+          arrowOption: {
+            color: "#FFFFFF",
+            size: 32
+          },
+          onDownload,
+          onClose: this.toggleModal(""),
           hideDownload,
           hideZoom,
           showRotate,
@@ -23988,36 +24375,38 @@
 
   // src/dev.tsx
   var import_client = __toESM(require_client());
-  var Demo = () => /* @__PURE__ */ import_react7.default.createElement("div", null, /* @__PURE__ */ import_react7.default.createElement("h1", null, "Demo of react-modal-image"), /* @__PURE__ */ import_react7.default.createElement("h2", null, "#1 with alt, small, medium and large props"), /* @__PURE__ */ import_react7.default.createElement("div", null, /* @__PURE__ */ import_react7.default.createElement(
-    LightBoxWithImage,
+  var Demo = () => /* @__PURE__ */ import_react9.default.createElement("div", null, /* @__PURE__ */ import_react9.default.createElement("h1", null, "Demo of react-modal-image"), /* @__PURE__ */ import_react9.default.createElement("h2", null, "#1 with alt, small, medium and large props"), /* @__PURE__ */ import_react9.default.createElement("div", null, /* @__PURE__ */ import_react9.default.createElement(
+    LightboxWithImage,
     {
       alt: "Here is the caption",
+      onDownload: () => console.log("download the image"),
+      fileName: "Custom File Name.jpg",
       small: "assets/example_img_small.jpg",
       medium: "assets/example_img_medium.jpg",
       large: "assets/example_img_large.jpg"
     }
-  )), /* @__PURE__ */ import_react7.default.createElement("p", null, "^ click or inspect the image above"), /* @__PURE__ */ import_react7.default.createElement("h2", null, "#2 with small and large props defined only"), /* @__PURE__ */ import_react7.default.createElement("div", null, /* @__PURE__ */ import_react7.default.createElement(
-    LightBoxWithImage,
+  )), /* @__PURE__ */ import_react9.default.createElement("p", null, "^ click or inspect the image above"), /* @__PURE__ */ import_react9.default.createElement("h2", null, "#2 with small and large props defined only"), /* @__PURE__ */ import_react9.default.createElement("div", null, /* @__PURE__ */ import_react9.default.createElement(
+    LightboxWithImage,
     {
       small: "assets/example_img_small.jpg",
       large: "assets/example_img_large.jpg"
     }
-  )), /* @__PURE__ */ import_react7.default.createElement("p", null, "^ click or inspect the image above"), /* @__PURE__ */ import_react7.default.createElement("h2", null, "#3 with small and medium props defined only"), /* @__PURE__ */ import_react7.default.createElement("div", null, /* @__PURE__ */ import_react7.default.createElement(
-    LightBoxWithImage,
+  )), /* @__PURE__ */ import_react9.default.createElement("p", null, "^ click or inspect the image above"), /* @__PURE__ */ import_react9.default.createElement("h2", null, "#3 with small and medium props defined only"), /* @__PURE__ */ import_react9.default.createElement("div", null, /* @__PURE__ */ import_react9.default.createElement(
+    LightboxWithImage,
     {
       small: "assets/example_img_small.jpg",
       medium: "assets/example_img_medium.jpg"
     }
-  )), /* @__PURE__ */ import_react7.default.createElement("p", null, "^ click or inspect the image above"), /* @__PURE__ */ import_react7.default.createElement("h2", null, "#4 with download and zoom -buttons hidden"), /* @__PURE__ */ import_react7.default.createElement("div", null, /* @__PURE__ */ import_react7.default.createElement(
-    LightBoxWithImage,
+  )), /* @__PURE__ */ import_react9.default.createElement("p", null, "^ click or inspect the image above"), /* @__PURE__ */ import_react9.default.createElement("h2", null, "#4 with download and zoom -buttons hidden"), /* @__PURE__ */ import_react9.default.createElement("div", null, /* @__PURE__ */ import_react9.default.createElement(
+    LightboxWithImage,
     {
       small: "assets/example_img_small.jpg",
       large: "assets/example_img_large.jpg",
       hideDownload: true,
       hideZoom: true
     }
-  )), /* @__PURE__ */ import_react7.default.createElement("p", null, "^ click or inspect the image above"), /* @__PURE__ */ import_react7.default.createElement("h2", null, "#5 with transparent png shown in hotpink background"), /* @__PURE__ */ import_react7.default.createElement("div", null, /* @__PURE__ */ import_react7.default.createElement(
-    LightBoxWithImage,
+  )), /* @__PURE__ */ import_react9.default.createElement("p", null, "^ click or inspect the image above"), /* @__PURE__ */ import_react9.default.createElement("h2", null, "#5 with transparent png shown in hotpink background"), /* @__PURE__ */ import_react9.default.createElement("div", null, /* @__PURE__ */ import_react9.default.createElement(
+    LightboxWithImage,
     {
       small: "example_transparent_heart.png",
       large: "example_transparent_heart.png",
@@ -24025,24 +24414,53 @@
       hideZoom: true,
       imageBackgroundColor: "hotpink"
     }
-  )), /* @__PURE__ */ import_react7.default.createElement("p", null, "^ click or inspect the image above"), /* @__PURE__ */ import_react7.default.createElement("h2", null, "#6 with rotation -button displayed"), /* @__PURE__ */ import_react7.default.createElement("div", null, /* @__PURE__ */ import_react7.default.createElement(
-    LightBoxWithImage,
+  )), /* @__PURE__ */ import_react9.default.createElement("p", null, "^ click or inspect the image above"), /* @__PURE__ */ import_react9.default.createElement("h2", null, "#6 with rotation -button displayed"), /* @__PURE__ */ import_react9.default.createElement("div", null, /* @__PURE__ */ import_react9.default.createElement(
+    LightboxWithImage,
     {
       small: "assets/example_img_small.jpg",
       large: "assets/example_img_large.jpg",
       showRotate: true
     }
-  )), /* @__PURE__ */ import_react7.default.createElement("p", null, "^ click or inspect the image above"), /* @__PURE__ */ import_react7.default.createElement("h2", null, "#7 with images from external domain"), /* @__PURE__ */ import_react7.default.createElement("div", null, /* @__PURE__ */ import_react7.default.createElement(
-    LightBoxWithImage,
+  )), /* @__PURE__ */ import_react9.default.createElement("p", null, "^ click or inspect the image above"), /* @__PURE__ */ import_react9.default.createElement("h2", null, "#7 with images from external domain"), /* @__PURE__ */ import_react9.default.createElement("div", null, /* @__PURE__ */ import_react9.default.createElement(
+    LightboxWithImage,
     {
       small: "https://dummyimage.com/420x200/000/aaa",
       large: "https://dummyimage.com/640x360/000/aaa"
     }
-  )), /* @__PURE__ */ import_react7.default.createElement("h2", null, "Further info"), /* @__PURE__ */ import_react7.default.createElement("p", null, /* @__PURE__ */ import_react7.default.createElement("a", { href: "https://github.com/aautio/react-modal-image" }, "Github")));
+  )), /* @__PURE__ */ import_react9.default.createElement("h2", null, "#8 with multiple images from external domain"), /* @__PURE__ */ import_react9.default.createElement("div", null, /* @__PURE__ */ import_react9.default.createElement(
+    LightboxGalleryWithImages,
+    {
+      fixedWith: "200px",
+      maxWidthLightBox: "80%",
+      images: [
+        {
+          id: "https://dummyimage.com/420x200/000/aaa",
+          src: "https://dummyimage.com/420x200/000/aaa",
+          fileName: "image-1.jpg",
+          alt: "image-1"
+        },
+        {
+          id: "assets/example_img_large.jpg",
+          src: "assets/example_img_large.jpg",
+          srcLarge: "assets/example_img_large.jpg"
+        },
+        {
+          id: "https://cdn.glitch.com/4c9ebeb9-8b9a-4adc-ad0a-238d9ae00bb5%2Fmdn_logo-only_color.svg?1535749917189",
+          src: "https://cdn.glitch.com/4c9ebeb9-8b9a-4adc-ad0a-238d9ae00bb5%2Fmdn_logo-only_color.svg?1535749917189",
+          fileName: "https://cdn.glitch.com/4c9ebeb9-8b9a-4adc-ad0a-238d9ae00bb5%2Fmdn_logo-only_color.svg?1535749917189",
+          alt: "test"
+        }
+      ]
+    }
+  )), /* @__PURE__ */ import_react9.default.createElement("h2", null, "Further info"), /* @__PURE__ */ import_react9.default.createElement("p", null, /* @__PURE__ */ import_react9.default.createElement("a", { href: "https://github.com/aautio/react-modal-image" }, "Github")));
   var container = document.getElementById("root");
   if (container) {
+    new EventSource("/esbuild").addEventListener(
+      "change",
+      () => location.reload()
+    );
     const root = (0, import_client.createRoot)(container);
-    root.render(/* @__PURE__ */ import_react7.default.createElement(Demo, null));
+    root.render(/* @__PURE__ */ import_react9.default.createElement(Demo, null));
   }
 })();
 /*! Bundled license information:
