@@ -6,6 +6,7 @@ const { context } = require("esbuild");
   const ctx = await context({
     entryPoints: ["src/dev.tsx"],
     bundle: true,
+    sourcemap: true,
     minify: process.env.NODE_ENV === "production",
     outfile: "public/script.js",
   });
