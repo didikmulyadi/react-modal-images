@@ -1,31 +1,26 @@
-const { build } = require("esbuild");
-const chokidar = require("chokidar");
-const liveServer = require("live-server");
+const { context } = require("esbuild");
 
 (async () => {
-  await build({
-    bundle: true,
-    // Defines env variables for bundled JavaScript; here `process.env.NODE_ENV`
-    // is propagated with a fallback.
-    define: {
-      "process.env.NODE_ENV": JSON.stringify(
-        process.env.NODE_ENV || "development"
-      ),
-    },
+  const PORT = +process.env.PORT || 8080;
+
+  const ctx = await context({
     entryPoints: ["src/dev.tsx"],
+    bundle: true,
     minify: process.env.NODE_ENV === "production",
     outfile: "public/script.js",
-    sourcemap: true,
   });
-  // `chokidar` watcher source changes.
 
-  // `liveServer` local server for hot reload.
-  liveServer.start({
-    // Opens the local server on start.
-    open: true,
-    // Uses `PORT=...` or 8080 as a fallback.
-    port: +process.env.PORT || 8080,
-    // Uses `public` as the local server folder.
-    root: "public",
-  });
+  await ctx.watch();
+
+  await ctx
+    .serve({
+      servedir: "public",
+      port: PORT,
+    })
+    .then(() => {
+      console.log(`http://localhost:${PORT} is started`);
+    })
+    .catch((err) => {
+      console.error("Something went wrong", err);
+    });
 })();
