@@ -2,28 +2,27 @@
 <h3 align="center">A _lightweight_ React component providing modal image Lightbox without dependency</h3>
 <p align="center">
   <p align="center">
-    <a href="https://www.npmjs.com/package/@didik-mulyadi/nodejs-api-doc">
-      <img alt="npm latest version" src="https://img.shields.io/npm/v/@didik-mulyadi/nodejs-api-doc/latest.svg">
+    <a href="https://www.npmjs.com/package/@didik-mulyadi/react-modal-image">
+      <img alt="npm latest version" src="https://img.shields.io/npm/v/@didik-mulyadi/react-modal-image/latest.svg">
     </a>
-    <a href="https://www.npmjs.com/package/@didik-mulyadi/nodejs-api-doc">
-      <img alt="npm bundle size" src="https://img.shields.io/bundlephobia/min/@didik-mulyadi/nodejs-api-doc">
+    <a href="https://www.npmjs.com/package/@didik-mulyadi/react-modal-image">
+      <img alt="npm bundle size" src="https://img.shields.io/bundlephobia/min/@didik-mulyadi/react-modal-image">
     </a>
-    <img alt="Visitors count" src="https://visitor-badge.laobi.icu/badge?page_id=@didik-mulyadi~nodejs-api-doc.visitor-badge&style=flat-square&color=0088cc">
-    <a href="https://www.npmjs.com/package/@didik-mulyadi/nodejs-api-doc">
-      <img alt="NPM license" src="https://img.shields.io/npm/l/@didik-mulyadi/nodejs-api-doc">
+    <img alt="Visitors count" src="https://visitor-badge.laobi.icu/badge?page_id=@didik-mulyadi~react-modal-image.visitor-badge&style=flat-square&color=0088cc">
+    <a href="https://www.npmjs.com/package/@didik-mulyadi/react-modal-image">
+      <img alt="NPM license" src="https://img.shields.io/npm/l/@didik-mulyadi/react-modal-image">
     </a>
   </p>
 </p>
 <br />
 <p align="center">
-   <a href="https://github.com/didikmulyadi/nodejs-api-doc/issues/new?template=bug_report.md">Bug report</a>      ·
-   <a href="https://github.com/didikmulyadi/nodejs-api-doc/issues/new?template=feature_request.md">Feature request</a>
+   <a href="https://github.com/didikmulyadi/react-modal-image/issues/new?template=bug_report.md">Bug report</a>      ·
+   <a href="https://github.com/didikmulyadi/react-modal-image/issues/new?template=feature_request.md">Feature request</a>
 </p>
 <br />
 <hr />
 
 > This package is created under [https://github.com/aautio/react-modal-image](https://github.com/aautio/react-modal-image) because that repository is not active and updated. This package is also fixed some issue from that repository.
-
 
 ## Original Features
 
@@ -50,4 +49,3 @@ You must bring your own `Set` and `fetch` polyfills if you use old Internet Expl
 - Support props `lightboxClassName` in the Lightbox component
 - Disable close-by OnClick
 - Control max width by Props
-
