@@ -22,20 +22,17 @@ A _lightweight_ React component providing modal image Lightbox.
 
 You need to bring your own `Set` and `fetch` polyfills if you use old Internet Explorers.
 
-## Fixed Original Issue ([link](https://github.com/aautio/react-modal-image/issues))
+## New Features From the Original
 
 - [x] Add onClose in props type
 - [x] Issue cors when downloading the image
-
-## New Features
-
 - [x] Typescript
-- [ ] Support multiple images with action (prev and next)
+- [x] Support multiple images with action (prev and next)
 - [x] Add on download
 - [x] Custom file name when downloading the image
-- [ ] Disable close by OnClick
-- [ ] Control max width by Props
 - [x] Support props `lightboxClassName` in Lightbox component
+- [x] Disable close by OnClick
+- [x] Control max width by Props
 
 ## Simple API
 
