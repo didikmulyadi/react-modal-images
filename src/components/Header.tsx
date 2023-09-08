@@ -8,6 +8,14 @@ import {
   RotateIcon,
 } from "./icons";
 
+function isSameOrigin(href: string) {
+  if (!href.includes("http")) {
+    return true;
+  }
+
+  return document.location.hostname !== new URL(href).hostname;
+}
+
 const Header = ({
   image,
   fileName,
@@ -27,16 +35,46 @@ const Header = ({
   const download =
     (href: string, name = null) =>
     (event: any) => {
-      const link = document.createElement("a");
-      link.href = href;
-      link.download = name || href.split("/").slice(-1)[0];
-
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-
       event.preventDefault();
-      onDownload?.();
+      const fileName = name || href.split("/").slice(-1)[0];
+
+      const createAnchor = (_href: string, target = "") => {
+        const tmpAnchor = document.createElement("a");
+        tmpAnchor.setAttribute("download", fileName);
+        tmpAnchor.setAttribute("href", _href);
+        tmpAnchor.setAttribute("target", target);
+
+        return tmpAnchor;
+      };
+
+      const clickAnchor = (tmpAnchor: HTMLAnchorElement) => {
+        document.body.appendChild(tmpAnchor);
+        tmpAnchor.click();
+        document.body.removeChild(tmpAnchor);
+        onDownload?.();
+      };
+
+      if (!isSameOrigin(href)) {
+        const tmpAnchor = createAnchor(href);
+        clickAnchor(tmpAnchor);
+        return;
+      }
+
+      fetch(href)
+        .then((res) => {
+          if (!res.ok) {
+            clickAnchor(createAnchor(href, "_blank"));
+          }
+
+          return res.blob().then((blob) => {
+            clickAnchor(createAnchor(URL.createObjectURL(blob), "_blank"));
+          });
+        })
+        .catch((err) => {
+          console.error(err);
+          console.error("Failed to download image from " + href);
+          clickAnchor(createAnchor(href, "_blank"));
+        });
     };
 
   return (
