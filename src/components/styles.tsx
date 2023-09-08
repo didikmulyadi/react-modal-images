@@ -58,8 +58,7 @@ export const lightboxStyles = ({
     width: 100%;
   }
 
-  .__react_modal_image__modal_content img, 
-  .__react_modal_image__modal_content svg {
+  .__react_modal_image__modal_content img {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -67,6 +66,28 @@ export const lightboxStyles = ({
     -webkit-transform: translate3d(-50%, -50%, 0);
     -ms-transform: translate3d(-50%, -50%, 0);
     overflow: hidden;
+  }
+
+  .__react_modal_image__action {
+    position: absolute;
+    top: 50%;
+    cursor: pointer;
+  }
+
+  .__react_modal_image__prev_arrow  {
+    left: 20%;
+  }
+
+  .__react_modal_image__next_arrow  {
+    right: 20%;
+  }
+
+  .__react_modal_image__next_arrow svg {
+    -moz-transform: scale(-1, 1);
+    -webkit-transform: scale(-1, 1);
+    -o-transform: scale(-1, 1);
+    -ms-transform: scale(-1, 1);
+    transform: scale(-1, 1);
   }
 
   .__react_modal_image__medium_img {
