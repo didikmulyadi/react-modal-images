@@ -1,7 +1,9 @@
 const { build } = require("esbuild");
 const { dependencies = {} } = require("./package.json");
 
+const OUTPUT_DIRECTORY = "dist";
 const entryFile = "src/index.tsx";
+
 const shared = {
   bundle: true,
   entryPoints: [entryFile],
@@ -15,13 +17,13 @@ const shared = {
 build({
   ...shared,
   format: "esm",
-  outfile: "./dist/index.esm.js",
+  outfile: `./${OUTPUT_DIRECTORY}/index.esm.js`,
   target: ["esnext", "node12.22.0"],
 });
 
 build({
   ...shared,
   format: "cjs",
-  outfile: "./dist/index.cjs.js",
+  outfile: `./${OUTPUT_DIRECTORY}/index.cjs.js`,
   target: ["esnext", "node12.22.0"],
 });
