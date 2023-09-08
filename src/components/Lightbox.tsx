@@ -16,6 +16,7 @@ export interface ILightBoxBaseProps {
   lightboxClassName?: string;
   onDownload?: () => void;
   fileName?: string;
+  maxWidthImageLightBox?: string;
 }
 
 interface ILightboxProps extends ILightBoxBaseProps {
@@ -29,10 +30,7 @@ interface ILightboxState {
   rotationDeg: number;
 }
 
-export default class Lightbox extends Component<
-  ILightboxProps,
-  ILightboxState
-> {
+export class Lightbox extends Component<ILightboxProps, ILightboxState> {
   contentEl: any;
   state = {
     move: { x: 0, y: 0 },
@@ -176,6 +174,7 @@ export default class Lightbox extends Component<
       hideZoom,
       showRotate,
       imageBackgroundColor = "black",
+      maxWidthImageLightBox,
     } = this.props;
     const { move, zoomed, rotationDeg } = this.state;
 
@@ -223,6 +222,7 @@ export default class Lightbox extends Component<
                   transform: `translate3d(-50%, -50%, 0) rotate(${rotationDeg}deg)`,
                   WebkitTransform: `translate3d(-50%, -50%, 0) rotate(${rotationDeg}deg)`,
                   MsTransform: `translate3d(-50%, -50%, 0) rotate(${rotationDeg}deg)`,
+                  maxWidth: maxWidthImageLightBox ?? "",
                 }}
               />
             )}
