@@ -35,6 +35,11 @@
     "url": "https://www.linkedin.com/in/didikmulyadi"
   },
   "license": "MIT",
+  "files": [
+    "dist/**/*",
+    "LICENSE",
+    "README.md"
+  ],
   "keywords": [
     "react-component",
     "lightbox",
