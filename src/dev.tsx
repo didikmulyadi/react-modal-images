@@ -4,7 +4,7 @@ import { createRoot } from "react-dom/client";
 
 const Demo = () => (
   <div>
-    <h1>Demo of react-modal-image</h1>
+    <h1>Demo of react-modal-images</h1>
 
     <h2>#1 with alt, small, medium and large props</h2>
 
@@ -117,7 +117,7 @@ const Demo = () => (
     <h2>Further info</h2>
 
     <p>
-      <a href="https://github.com/aautio/react-modal-image">Github</a>
+      <a href="https://github.com/didikmulyadi/react-modal-images">Github</a>
     </p>
   </div>
 );

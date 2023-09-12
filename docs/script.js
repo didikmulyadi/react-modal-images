@@ -23842,7 +23842,7 @@
       };
       this.getCoordinatesIfOverImg = (event) => {
         const point = event.changedTouches ? event.changedTouches[0] : event;
-        if (point.target.id !== "react-modal-image-img") {
+        if (point.target.id !== "react-modal-images-img") {
           return;
         }
         const dim = this.contentEl.getBoundingClientRect();
@@ -23962,7 +23962,7 @@
         zoomed && /* @__PURE__ */ import_react5.default.createElement(
           Image,
           {
-            id: "react-modal-image-img",
+            id: "react-modal-images-img",
             className: "__react_modal_image__large_img",
             src: large || medium || "",
             style: {
@@ -23976,7 +23976,7 @@
         !zoomed && /* @__PURE__ */ import_react5.default.createElement(
           Image,
           {
-            id: "react-modal-image-img",
+            id: "react-modal-images-img",
             className: "__react_modal_image__medium_img",
             src: medium || large || "",
             handleDoubleClick: this.toggleZoom,
@@ -24089,7 +24089,7 @@
       };
       this.getCoordinatesIfOverImg = (event) => {
         const point = event.changedTouches ? event.changedTouches[0] : event;
-        if (point.target.id !== "react-modal-image-img") {
+        if (point.target.id !== "react-modal-images-img") {
           return;
         }
         const dim = this.contentEl.getBoundingClientRect();
@@ -24224,7 +24224,7 @@
         zoomed && /* @__PURE__ */ import_react7.default.createElement(
           Image,
           {
-            id: "react-modal-image-img",
+            id: "react-modal-images-img",
             className: "__react_modal_image__large_img",
             src: selectedImage.srcLarge ?? selectedImage.src,
             style: {
@@ -24257,7 +24257,7 @@
           /* @__PURE__ */ import_react7.default.createElement(
             Image,
             {
-              id: "react-modal-image-img",
+              id: "react-modal-images-img",
               className: "__react_modal_image__medium_img",
               src: selectedImage.src,
               handleDoubleClick: this.toggleZoom,
@@ -24375,7 +24375,7 @@
 
   // src/dev.tsx
   var import_client = __toESM(require_client());
-  var Demo = () => /* @__PURE__ */ import_react9.default.createElement("div", null, /* @__PURE__ */ import_react9.default.createElement("h1", null, "Demo of react-modal-image"), /* @__PURE__ */ import_react9.default.createElement("h2", null, "#1 with alt, small, medium and large props"), /* @__PURE__ */ import_react9.default.createElement("div", null, /* @__PURE__ */ import_react9.default.createElement(
+  var Demo = () => /* @__PURE__ */ import_react9.default.createElement("div", null, /* @__PURE__ */ import_react9.default.createElement("h1", null, "Demo of react-modal-images"), /* @__PURE__ */ import_react9.default.createElement("h2", null, "#1 with alt, small, medium and large props"), /* @__PURE__ */ import_react9.default.createElement("div", null, /* @__PURE__ */ import_react9.default.createElement(
     LightboxWithImage,
     {
       alt: "Here is the caption",
@@ -24452,7 +24452,7 @@
         }
       ]
     }
-  )), /* @__PURE__ */ import_react9.default.createElement("h2", null, "Further info"), /* @__PURE__ */ import_react9.default.createElement("p", null, /* @__PURE__ */ import_react9.default.createElement("a", { href: "https://github.com/aautio/react-modal-image" }, "Github")));
+  )), /* @__PURE__ */ import_react9.default.createElement("h2", null, "Further info"), /* @__PURE__ */ import_react9.default.createElement("p", null, /* @__PURE__ */ import_react9.default.createElement("a", { href: "https://github.com/didikmulyadi/react-modal-images" }, "Github")));
   var container = document.getElementById("root");
   if (container) {
     new EventSource("/esbuild").addEventListener(

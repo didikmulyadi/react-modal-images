@@ -57,7 +57,7 @@ export class Lightbox extends Component<ILightboxProps, ILightboxState> {
   getCoordinatesIfOverImg = (event: any) => {
     const point = event.changedTouches ? event.changedTouches[0] : event;
 
-    if (point.target.id !== "react-modal-image-img") {
+    if (point.target.id !== "react-modal-images-img") {
       // the img was not a target of the coordinates
       return;
     }
@@ -200,7 +200,7 @@ export class Lightbox extends Component<ILightboxProps, ILightboxState> {
           >
             {zoomed && (
               <Image
-                id="react-modal-image-img"
+                id="react-modal-images-img"
                 className="__react_modal_image__large_img"
                 src={large || medium || ""}
                 style={{
@@ -213,7 +213,7 @@ export class Lightbox extends Component<ILightboxProps, ILightboxState> {
             )}
             {!zoomed && (
               <Image
-                id="react-modal-image-img"
+                id="react-modal-images-img"
                 className="__react_modal_image__medium_img"
                 src={medium || large || ""}
                 handleDoubleClick={this.toggleZoom}

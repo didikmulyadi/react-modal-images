@@ -1,5 +1,5 @@
 {
-  "name": "@didik-mulyadi/react-modal-image",
+  "name": "@didik-mulyadi/react-modal-images",
   "version": "1.0.0",
   "description": "Lightweight Lightbox React Component",
   "main": "dist/index.cjs.js",

@@ -81,7 +81,7 @@ export class LightboxGallery extends Component<
   getCoordinatesIfOverImg = (event: any) => {
     const point = event.changedTouches ? event.changedTouches[0] : event;
 
-    if (point.target.id !== "react-modal-image-img") {
+    if (point.target.id !== "react-modal-images-img") {
       // the img was not a target of the coordinates
       return;
     }
@@ -246,7 +246,7 @@ export class LightboxGallery extends Component<
           >
             {zoomed && (
               <Image
-                id="react-modal-image-img"
+                id="react-modal-images-img"
                 className="__react_modal_image__large_img"
                 src={selectedImage.srcLarge ?? selectedImage.src}
                 style={{
@@ -276,7 +276,7 @@ export class LightboxGallery extends Component<
                   </span>
                 )}
                 <Image
-                  id="react-modal-image-img"
+                  id="react-modal-images-img"
                   className="__react_modal_image__medium_img"
                   src={selectedImage.src}
                   handleDoubleClick={this.toggleZoom}
