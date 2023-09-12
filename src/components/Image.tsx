@@ -36,6 +36,8 @@ export default class Image extends Component<IImageProps, IImageState> {
         {this.state.loading && <SpinnerIcon />}
         <img
           id={id}
+          loading="lazy"
+          alt=""
           className={className}
           src={src}
           style={style}
