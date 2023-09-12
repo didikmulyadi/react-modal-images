@@ -32,7 +32,7 @@ export default class Image extends Component<IImageProps, IImageState> {
     const { id, className, src, style, handleDoubleClick } = this.props;
 
     return (
-      <div>
+      <div className="__react_modal_image__modal_img">
         {this.state.loading && <SpinnerIcon />}
         <img
           id={id}
