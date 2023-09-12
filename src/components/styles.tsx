@@ -58,7 +58,8 @@ export const lightboxStyles = ({
     width: 100%;
   }
 
-  .__react_modal_image__modal_content img {
+  .__react_modal_image__modal_img img, 
+  .__react_modal_image__modal_img svg {
     position: absolute;
     top: 50%;
     left: 50%;
