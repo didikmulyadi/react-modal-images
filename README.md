@@ -33,7 +33,7 @@
 - Esc and Enter the image to close the lightbox
 - User can zoom & move the image or download the highest quality one
 - Download and Zoom -buttons can be hidden.
-- Image alt is shown as the title of lightbox
+- Image alt is shown as the title of the lightbox
 - The background color of transparent images can be overridden.
 
 You must bring your own `Set` and `fetch` polyfills if you use old Internet Explorers.
@@ -49,3 +49,9 @@ You must bring your own `Set` and `fetch` polyfills if you use old Internet Expl
 - Support props `lightboxClassName` in the Lightbox component
 - Disable close-by OnClick
 - Control max width by Props
+
+## TODO
+- Beautify the Github Pages
+- Add more docs in the github pages
+- Add more docs the readme
+- Deploy to the NPM Registry
