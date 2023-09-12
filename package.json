@@ -1,5 +1,5 @@
 {
-  "name": "react-modal-image",
+  "name": "@didik-mulyadi/react-modal-image",
   "version": "1.0.0",
   "description": "Lightweight Lightbox React Component",
   "main": "dist/index.cjs.js",
@@ -28,7 +28,12 @@
     "type": "git",
     "url": "https://github.com/didikmulyadi/react-modal-images"
   },
-  "author": "Didik Mulyadu <didikmulyadi12@gmail.com>",
+  "homepage": "https://github.com/didikmulyadi/react-modal-images",
+  "author": {
+    "name": "Didik Mulyadi",
+    "email": "didikmulyadi12@gmail.com",
+    "url": "https://www.linkedin.com/in/didikmulyadi"
+  },
   "license": "MIT",
   "keywords": [
     "react-component",
@@ -37,5 +42,8 @@
     "image",
     "react",
     "gallery"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }
