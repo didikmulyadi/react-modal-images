@@ -1,4 +1,4 @@
-<h1 align="center" style="border-bottom: none;">React Modal Image⚡️</h1>
+<h1 align="center" style="border-bottom: none;">React Modal Images⚡️</h1>
 <h3 align="center">A _lightweight_ React component providing modal image Lightbox without dependency</h3>
 <p align="center">
   <p align="center">
